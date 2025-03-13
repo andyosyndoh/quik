@@ -38,5 +38,21 @@ func main() {
 			fmt.Println("Error: invalid chunk size")
 			os.Exit(1)
 		}
+
+	case "lookup":
+		lookupFlags := flag.NewFlagSet("lookup", flag.ExitOnError)
+		indexFile := lookupFlags.String("i", "", "Index file path")
+		simHashStr := lookupFlags.String("h", "", "SimHash value to lookup")
+		lookupFlags.Parse(args)
+
+		if *indexFile == "" || *simHashStr == "" {
+			fmt.Println("Error: -i and -h are required for lookup command")
+			os.Exit(1)
+		}
+
+	default:
+		fmt.Println("Invalid command. Use 'index' or 'lookup'.")
+		os.Exit(1)
+
 	}
 }
