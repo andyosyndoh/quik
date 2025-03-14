@@ -25,6 +25,8 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 	}
 	var sums [64]int
 	for word, cnt := range counts {
-		
+		h.Reset()
+		h.Write([]byte(word))
+		hash := h.Sum64()
 	}
 }
