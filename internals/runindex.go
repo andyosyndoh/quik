@@ -14,14 +14,14 @@ func runIndex(inputFile string, chunkSize int, outputFile string) error {
 		return fmt.Errorf("error building index: %v", err)
 	}
     
-	// Prepare the IndexData structure to store metadata and the index itself.
+	// Prepare the IndexData structure to store metadata and the index itself
 	indexData := IndexData{
 		FileName:  inputFile,
 		ChunkSize: chunkSize,
 		Index:     fi.index.m,
 	}
 
-	// Create the output file to store the serialized index.
+	// Create the output file to store the serialized index
 	dataFile, err := os.Create(outputFile)
 	if err != nil {
 		return fmt.Errorf("error creating index file: %v", err)
