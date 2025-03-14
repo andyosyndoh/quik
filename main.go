@@ -73,6 +73,11 @@ func main() {
 			os.Exit(1)
 		}
 
+		if err := internals.RunFuzzy(*indexFile, *simHashStr); err != nil {
+			fmt.Printf("Error: %v\n", err)
+			os.Exit(1)
+		}
+
 	default:
 		fmt.Println("Invalid command. Use 'index' or 'lookup'.")
 		os.Exit(1)
