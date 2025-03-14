@@ -1,6 +1,9 @@
 package internals
 
-import "os"
+import (
+	"os"
+	"sync"
+)
 
 type chunkData struct {
 	data   []byte
@@ -21,4 +24,7 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 
 	chunkChannel := make(chan chunkData, 1000)
 	resultChannel := make(chan resultData, 1000)
+
+	var wg sync.WaitGroup
+	// wg.Add(fi.numWorkers)
 }
