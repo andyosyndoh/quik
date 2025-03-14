@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"runtime"
 )
 
 // IndexFileDecoder decodes the index file and prints the metadata and index data.
@@ -21,6 +22,7 @@ func IndexFileDecoder(indexData IndexData) error {
 	writer := bufio.NewWriter(hashfile)
 	defer writer.Flush()
 
+	numWorkers := runtime.NumCPU()
 	for simhash, offsets := range indexData.Index {
 		fmt.Printf("SimHash: %x\n", simhash)
 		for _, offset := range offsets {
