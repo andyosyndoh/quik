@@ -11,3 +11,13 @@ type FileIndex struct {
 	index      *Index
 	numWorkers int
 }
+
+// NewIndex creates a new Index instance.
+func NewIndex() *Index {
+	return &Index{m: make(map[uint64][]int64)}
+}
+
+// Lookup retrieves the byte offsets for a given SimHash.
+func (idx *Index) Lookup(hash uint64) []int64 {
+	return idx.m[hash]
+}
