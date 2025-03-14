@@ -37,12 +37,12 @@ func TestRunIndex(t *testing.T) {
 				t.Errorf("RunIndex() for %s failed: expected failure = %v, got error = %v", tt.name, tt.expectFail, err)
 			}
 
-	// 		// Check if output file exists when expected
-	// 		if !tt.expectFail {
-	// 			if _, err := os.Stat(outputFile); os.IsNotExist(err) {
-	// 				t.Errorf("Expected output file %s was not created", outputFile)
-	// 			}
-	// 		}
-	// 	})
-	// }
+			// Check if output file exists when expected
+			if !tt.expectFail {
+				if _, err := os.Stat(outputFile); os.IsNotExist(err) {
+					t.Errorf("Expected output file %s was not created", outputFile)
+				}
+			}
+		})
+	}
 }
