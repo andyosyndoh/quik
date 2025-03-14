@@ -61,9 +61,9 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 			return err
 		}
 
-		// data := make([]byte, n)
-		// copy(data, buf[:n])
-		// chunkChannel <- chunkData{data: data, offset: offset}
-		// offset += int64(n)
+		data := make([]byte, n)
+		copy(data, buf[:n])
+		chunkChannel <- chunkData{data: data, offset: offset}
+		offset += int64(n)
 	}
 }
