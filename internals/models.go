@@ -27,3 +27,12 @@ func NewIndex() *Index {
 func (idx *Index) Lookup(hash uint64) []int64 {
 	return idx.m[hash]
 }
+
+// NewFileIndex initializes a new FileIndex with specified chunk size and number of workers.
+func NewFileIndex(chunkSize, numWorkers int) *FileIndex {
+	return &FileIndex{
+		chunkSize:  chunkSize,
+		index:      NewIndex(),
+		numWorkers: numWorkers,
+	}
+}
