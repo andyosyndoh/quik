@@ -10,6 +10,7 @@
   - [Index Structure](#index-structure)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [How to Run](#how-to-run)
   - [Indexing](#indexing-a-text-file)
   - [Lookup](#looking-up-content-by-simhash)
 - [Output](#output)
