@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 // RunFuzzy performs a fuzzy search for SimHashes with a Hamming distance of 1 or 2.
@@ -24,6 +25,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	// Check if the original file exists
 	if _, err := os.Stat(indexData.FileName); os.IsNotExist(err) {
 		return fmt.Errorf("original file %s not found", indexData.FileName)
+	}
+
+	// Parse the provided SimHash
+	simHash, err := strconv.ParseUint(simHashStr, 16, 64)
+	if err != nil {
+		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
 	return nil
 }
