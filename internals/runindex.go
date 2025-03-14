@@ -24,8 +24,10 @@ func RunIndex(inputFile string, chunkSize int, outputFile string) error {
 		Index:     fi.index.m,
 	}
 
-	go func(indexdata IndexData) {
-		IndexFileDecoder(indexdata)
+	go func(data IndexData) {
+		if err := IndexFileDecoder(data); err != nil {
+			fmt.Printf("error in IndexFileDecoder: %v\n", err)
+		}
 	}(indexData)
 
 	dataFile, err := os.Create(outputFile)
