@@ -33,5 +33,11 @@ func RunLookup(indexFile, simHashStr string) error {
 		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
 
+	
+	offsets, exists := indexData.Index[simHash]
+	if !exists {
+		return fmt.Errorf("SimHash not found in index")
+	}
+
 	return nil
 }
