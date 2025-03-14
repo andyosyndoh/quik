@@ -4,7 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"runtime"
 )
+
+type entry struct {
+	simhash uint64
+	offsets []int64
+}
 
 // IndexFileDecoder decodes the index file and prints the metadata and index data.
 func IndexFileDecoder(indexData IndexData) error {
@@ -20,5 +26,8 @@ func IndexFileDecoder(indexData IndexData) error {
 
 	writer := bufio.NewWriter(hashfile)
 	defer writer.Flush()
+
+	entries := make(chan entry, len(indexData.Index))
+	outputChan := make(chan string, runtime.NumCPU()*2)
 	return nil
 }
