@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"textindexer/internals"
 )
 
 func main() {
@@ -36,6 +37,11 @@ func main() {
 
 		if *chunkSize <= 0 {
 			fmt.Println("Error: invalid chunk size")
+			os.Exit(1)
+		}
+
+		if err := internals.RunIndex(*inputFile, *chunkSize, *outputFile); err != nil {
+			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
 
