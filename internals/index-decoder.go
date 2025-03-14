@@ -32,6 +32,14 @@ func IndexFileDecoder(indexData IndexData) error {
 	entries := make(chan entry, len(indexData.Index))
 	outputChan := make(chan string, numWorkers*2)
 
+	// Send entries to be processed
+	go func() {
+		for simhash, offsets := range indexData.Index {
+			entries <- entry{simhash, offsets}
+		}
+		close(entries)
+	}()
+
 	for simhash, offsets := range indexData.Index {
 		fmt.Printf("SimHash: %x\n", simhash)
 		for _, offset := range offsets {
