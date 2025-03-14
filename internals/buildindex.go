@@ -1,5 +1,10 @@
 package internals
 
+import (
+	"hash"
+	"strings"
+)
+
 type chunkData struct {
 	data   []byte
 	offset int64
