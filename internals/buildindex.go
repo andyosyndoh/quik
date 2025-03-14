@@ -1,6 +1,7 @@
 package internals
 
 import (
+	"hash/fnv"
 	"os"
 	"sync"
 )
@@ -28,8 +29,16 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 	var wg sync.WaitGroup
 	wg.Add(fi.numWorkers)
 
-	// Start worker goroutines
+	// Start worker goroutines to ensures efficient parallel processing of file chunks for SimHash computatio
 	for i := 0; i < fi.numWorkers; i++ {
-		
+		go func() {
+			defer wg.Done()
+			h := fnv.New64a()
+			for cd := range chunkChannel {
+				simhash := computeSimHash(cd.data, h)
+				resultChannel <- resultData{simhash, cd.offset}
+			}
+		}()
+
 	}
 }
