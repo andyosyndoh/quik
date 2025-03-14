@@ -3,8 +3,10 @@ package internals
 import (
 	"encoding/gob"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func RunLookup(indexFile, simHashStr string) error {
@@ -45,5 +47,19 @@ func RunLookup(indexFile, simHashStr string) error {
 	}
 	defer file.Close()
 
+	for _, offset := range offsets {
+		chunk := make([]byte, indexData.ChunkSize)
+		n, err := file.ReadAt(chunk, offset)
+		if err != nil && err != io.EOF {
+			return fmt.Errorf("error reading chunk at offset %d: %v", offset, err)
+		}
+		chunk = chunk[:n]
+
+		words := strings.Fields(string(chunk))
+		phrase := strings.Join(words, " ")
+		if len(phrase) > 50 {
+			phrase = phrase[:50] + "..."
+		}
+	}
 	return nil
 }
