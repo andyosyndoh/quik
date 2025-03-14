@@ -33,7 +33,7 @@ func RunLookup(indexFile, simHashStr string) error {
 		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
 
-	
+	//Lookup the SimHash in the index to retrieve the byte offsets
 	offsets, exists := indexData.Index[simHash]
 	if !exists {
 		return fmt.Errorf("SimHash not found in index")
