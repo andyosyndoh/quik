@@ -2,6 +2,7 @@ package internals
 
 import (
 	"fmt"
+	"os"
 	"runtime"
 )
 
@@ -16,5 +17,11 @@ func runIndex(inputFile string, chunkSize int, outputFile string) error {
 		ChunkSize: chunkSize,
 		Index:     fi.index.m,
 	}
+
+	dataFile, err := os.Create(outputFile)
+	if err != nil {
+		return fmt.Errorf("error creating index file: %v", err)
+	}
+	defer dataFile.Close()
 	return nil
 }
