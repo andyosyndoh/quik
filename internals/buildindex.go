@@ -37,4 +37,5 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 			}
 		}
 	}
+	var simhash uint64
 }
