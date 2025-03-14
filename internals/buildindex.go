@@ -2,6 +2,7 @@ package internals
 
 import (
 	"hash/fnv"
+	"io"
 	"os"
 	"sync"
 )
@@ -66,4 +67,10 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 		chunkChannel <- chunkData{data: data, offset: offset}
 		offset += int64(n)
 	}
+	close(chunkChannel)
+	// wg.Wait()
+	// close(resultChannel)
+	// <-collectorDone
+
+	// return nil
 }
