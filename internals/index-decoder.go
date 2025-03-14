@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"runtime"
+	"strings"
+	"sync"
 )
 
 type entry struct {
@@ -42,11 +44,20 @@ func IndexFileDecoder(indexData IndexData) error {
 
 	var wg sync.WaitGroup
 
-	for simhash, offsets := range indexData.Index {
-		fmt.Printf("SimHash: %x\n", simhash)
-		for _, offset := range offsets {
-			fmt.Printf("  Byte offset: %d\n", offset)
-		}
+	// Start worker pool
+	for i := 0; i < numWorkers; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for e := range entries {
+				var buf strings.Builder
+				fmt.Fprintf(&buf, "SimHash: %x\n", e.simhash)
+				for _, offset := range e.offsets {
+					fmt.Fprintf(&buf, "  Byte offset: %d\n", offset)
+				}
+				outputChan <- buf.String()
+			}
+		}()
 	}
 	return nil
 }
