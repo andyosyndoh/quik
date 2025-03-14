@@ -32,3 +32,15 @@
     - [ How to run Unit Tests](#unit-tests)
 11. [Contributors](#contributors)
 12. [License](#license)
+
+## Introduction
+This program was developed to address the challenge of efficiently indexing and retrieving content from large text files. Traditional methods of text search can be slow and resource-intensive, especially when dealing with massive datasets. 
+
+By leveraging **SimHash**, a technique for generating similarity-preserving fingerprints, TextIndexer provides a fast and scalable solution for content lookup and near-duplicate detection.
+
+This tool is particularly useful for applications like:
+- **Document similarity detection**: Identifying near-duplicate content in large text corpora.
+- **Content retrieval**: Quickly locating specific phrases or chunks within large files.
+- **Text analysis**: Enabling efficient processing of large datasets for NLP(Natural Language Processing) tasks.
+
+This document provides a detailed explanation of the tool, including the algorithms used, the approach taken, performance insights, unique techniques, and clear instructions on how to run the program and its test cases.
