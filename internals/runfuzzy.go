@@ -39,5 +39,9 @@ func RunFuzzy(indexFile, simHashStr string) error {
 		return fmt.Errorf("error opening original file: %v", err)
 	}
 	defer file.Close()
+
+	for hash, offsets := range indexData.Index {
+		
+	}
 	return nil
 }
