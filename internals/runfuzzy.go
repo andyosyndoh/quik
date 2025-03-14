@@ -32,5 +32,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	if err != nil {
 		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
+
+	// Open the original file
+	file, err := os.Open(indexData.FileName)
+	if err != nil {
+		return fmt.Errorf("error opening original file: %v", err)
+	}
+	defer file.Close()
 	return nil
 }
