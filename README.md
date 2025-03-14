@@ -1,10 +1,11 @@
 # Text Indexer
 **TextIndexer** is a Go-based command-line tool designed to efficiently index and retrieve text content. It processes large text files by generating **SimHash fingerprints** for fixed-size chunks, enabling fast and accurate content lookup. Whether you're indexing documents or searching for specific text, TextIndexer delivers performance and simplicity.
-## Table of Contents
 
 ## Table of Contents
 
-1. [Overview](#overview)
+## Table of Contents
+
+1. [Introduction](#overview)
 2. [Features](#features)
 3. [Algorithms and Techniques](#algorithms-and-techniques)
    - [SimHash](#simhash)
