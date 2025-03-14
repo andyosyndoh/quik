@@ -29,5 +29,15 @@ func IndexFileDecoder(indexData IndexData) error {
 
 	entries := make(chan entry, len(indexData.Index))
 	outputChan := make(chan string, runtime.NumCPU()*2)
+
+	// Send entries to be processed
+	go func() {
+		for simhash, offsets := range indexData.Index {
+			entries <- entry{simhash, offsets}
+		}
+		close(entries)
+	}()
+
+	 
 	return nil
 }
