@@ -10,6 +10,10 @@ import (
 // RunIndex builds an index for the input file, validates the input, and serializes it to the output file.
 // It also starts a goroutine to process the index data concurrently using IndexFileDecoder.
 func RunIndex(inputFile string, chunkSize int, outputFile string) error {
+	// Ensures chunkSize is valid to prevent infinite loops or excessive resource usage.
+	if chunkSize <= 0 {
+		return fmt.Errorf("invalid chunk size: %d, must be greater than 0", chunkSize)
+	}
 	// Validate input file
 	if err := ValidateInputFile(inputFile); err != nil {
 		return err
