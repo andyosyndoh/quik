@@ -20,15 +20,15 @@ func TestRunIndex(t *testing.T) {
 	defer os.Remove(outputFile)
 
 	// // Define test cases
-	// tests := []struct {
-	// 	name       string
-	// 	chunkSize  int
-	// 	expectFail bool
-	// }{
-	// 	{"Valid chunk size", 16, false},
-	// 	{"Zero chunk size", 0, true},
-	// 	{"Negative chunk size", -1, true},
-	// }
+	tests := []struct {
+		name       string
+		chunkSize  int
+		expectFail bool
+	}{
+		{"Valid chunk size", 16, false},
+		{"Zero chunk size", 0, true},
+		{"Negative chunk size", -1, true},
+	}
 
 	// for _, tt := range tests {
 	// 	t.Run(tt.name, func(t *testing.T) {
