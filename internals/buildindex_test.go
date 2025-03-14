@@ -23,11 +23,11 @@ func TestBuildIndex(t *testing.T) {
 		index:      &Index{m: make(map[uint64][]int64)},
 	}
 
-	// // Run the BuildIndex function
-	// err = fileIndex.BuildIndex(testFilename)
-	// if err != nil {
-	// 	t.Fatalf("BuildIndex failed: %v", err)
-	// }
+	// Run the BuildIndex function
+	err = fileIndex.BuildIndex(testFilename)
+	if err != nil {
+		t.Fatalf("BuildIndex failed: %v", err)
+	}
 
 	// // Verify the index is populated
 	// if len(fileIndex.index.m) == 0 {
