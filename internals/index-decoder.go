@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// IndexFileDecoder decodes the index file and prints the metadata and index data.
 func IndexFileDecoder(file string) error {
 	// Load index file into memory
 	dataFile, err := os.Open(file)
