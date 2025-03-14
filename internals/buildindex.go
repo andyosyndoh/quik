@@ -41,4 +41,5 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 		}()
 
 	}
+	collectorDone := make(chan struct{})
 }
