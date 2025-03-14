@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"runtime"
+	"strings"
 	"sync"
 )
 
@@ -41,5 +42,21 @@ func IndexFileDecoder(indexData IndexData) error {
 
 	var wg sync.WaitGroup
 	numWorkers := runtime.NumCPU()
+
+	// Start worker pool
+	for i := 0; i < numWorkers; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for e := range entries {
+				var buf strings.Builder
+				fmt.Fprintf(&buf, "SimHash: %x\n", e.simhash)
+				for _, offset := range e.offsets {
+					fmt.Fprintf(&buf, "  Byte offset: %d\n", offset)
+				}
+				outputChan <- buf.String()
+			}
+		}()
+	}
 	return nil
 }
