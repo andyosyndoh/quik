@@ -42,4 +42,10 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 
 	}
 	collectorDone := make(chan struct{})
+	go func() {
+		for rd := range resultChannel {
+			fi.index.m[rd.simhash] = append(fi.index.m[rd.simhash], rd.offset)
+		}
+		// close(collectorDone)
+	}()
 }
