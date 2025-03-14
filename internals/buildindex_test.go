@@ -1,15 +1,16 @@
 package internals
 
 import (
+	"os"
 	"testing"
 )
 
 // TestBuildIndex verifies that BuildIndex correctly processes a file and populates the index.
 func TestBuildIndex(t *testing.T) {
-	// // Create a temporary test file
-	// testFilename := "testfile.txt"
-	// content := "This is a test file. It contains multiple words for indexing."
-	// err := os.WriteFile(testFilename, []byte(content), 0644)
+	// Create a temporary test file
+	testFilename := "testfile.txt"
+	content := "This is a test file. It contains multiple words for indexing."
+	err := os.WriteFile(testFilename, []byte(content), 0644)
 	// if err != nil {
 	// 	t.Fatalf("Failed to create test file: %v", err)
 	// }
