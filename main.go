@@ -44,6 +44,7 @@ func main() {
 			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
+		internals.IndexFileDecoder(*outputFile)
 
 	case "lookup":
 		lookupFlags := flag.NewFlagSet("lookup", flag.ExitOnError)
