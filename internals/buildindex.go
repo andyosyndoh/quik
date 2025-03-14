@@ -46,6 +46,6 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 		for rd := range resultChannel {
 			fi.index.m[rd.simhash] = append(fi.index.m[rd.simhash], rd.offset)
 		}
-		// close(collectorDone)
+		close(collectorDone)
 	}()
 }
