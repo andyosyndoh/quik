@@ -51,4 +51,19 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 
 	offset := int64(0)
 	buf := make([]byte, fi.chunkSize)
+
+	for {
+		n, err := file.Read(buf)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			return err
+		}
+
+		// data := make([]byte, n)
+		// copy(data, buf[:n])
+		// chunkChannel <- chunkData{data: data, offset: offset}
+		// offset += int64(n)
+	}
 }
