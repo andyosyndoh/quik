@@ -48,4 +48,7 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 		}
 		close(collectorDone)
 	}()
+
+	offset := int64(0)
+	buf := make([]byte, fi.chunkSize)
 }
