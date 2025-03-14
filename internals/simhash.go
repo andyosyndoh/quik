@@ -11,5 +11,11 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 	var sums [64]int
 	text := string(data)
 	words := strings.Fields(text)
+
+	counts := make(map[string]int)
+	for _, word := range words {
+		counts[word]++
+	}
+	
 	return simhash
 }
