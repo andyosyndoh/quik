@@ -30,12 +30,12 @@ func TestRunIndex(t *testing.T) {
 		{"Negative chunk size", -1, true},
 	}
 
-	// for _, tt := range tests {
-	// 	t.Run(tt.name, func(t *testing.T) {
-	// 		err := RunIndex(inputFile, tt.chunkSize, outputFile)
-	// 		if (err != nil) != tt.expectFail {
-	// 			t.Errorf("RunIndex() for %s failed: expected failure = %v, got error = %v", tt.name, tt.expectFail, err)
-	// 		}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := RunIndex(inputFile, tt.chunkSize, outputFile)
+			if (err != nil) != tt.expectFail {
+				t.Errorf("RunIndex() for %s failed: expected failure = %v, got error = %v", tt.name, tt.expectFail, err)
+			}
 
 	// 		// Check if output file exists when expected
 	// 		if !tt.expectFail {
