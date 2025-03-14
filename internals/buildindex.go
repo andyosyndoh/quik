@@ -27,4 +27,9 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 
 	var wg sync.WaitGroup
 	wg.Add(fi.numWorkers)
+
+	// Start worker goroutines
+	for i := 0; i < fi.numWorkers; i++ {
+		
+	}
 }
