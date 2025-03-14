@@ -26,5 +26,5 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 	resultChannel := make(chan resultData, 1000)
 
 	var wg sync.WaitGroup
-	// wg.Add(fi.numWorkers)
+	wg.Add(fi.numWorkers)
 }
