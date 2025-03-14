@@ -16,12 +16,12 @@ func TestBuildIndex(t *testing.T) {
 	}
 	defer os.Remove(testFilename) // Cleanup after test
 
-	// // Initialize FileIndex with necessary parameters
-	// fileIndex := &FileIndex{
-	// 	numWorkers: 2,  // Use 2 worker goroutines for parallel processing
-	// 	chunkSize:  16, // Read file in 16-byte chunks
-	// 	index:      &Index{m: make(map[uint64][]int64)},
-	// }
+	// Initialize FileIndex with necessary parameters
+	fileIndex := &FileIndex{
+		numWorkers: 2,  // Use 2 worker goroutines for parallel processing
+		chunkSize:  16, // Read file in 16-byte chunks
+		index:      &Index{m: make(map[uint64][]int64)},
+	}
 
 	// // Run the BuildIndex function
 	// err = fileIndex.BuildIndex(testFilename)
