@@ -40,6 +40,8 @@ func IndexFileDecoder(indexData IndexData) error {
 		close(entries)
 	}()
 
+	var wg sync.WaitGroup
+
 	for simhash, offsets := range indexData.Index {
 		fmt.Printf("SimHash: %x\n", simhash)
 		for _, offset := range offsets {
