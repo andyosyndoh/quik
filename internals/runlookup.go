@@ -39,5 +39,11 @@ func RunLookup(indexFile, simHashStr string) error {
 		return fmt.Errorf("SimHash not found in index")
 	}
 
+	file, err := os.Open(indexData.FileName)
+	if err != nil {
+		return fmt.Errorf("error opening original file: %v", err)
+	}
+	defer file.Close()
+
 	return nil
 }
