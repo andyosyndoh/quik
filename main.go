@@ -44,7 +44,6 @@ func main() {
 			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
-		// internals.IndexFileDecoder(*outputFile)
 
 	case "lookup":
 		lookupFlags := flag.NewFlagSet("lookup", flag.ExitOnError)
@@ -58,6 +57,23 @@ func main() {
 		}
 
 		if err := internals.RunLookup(*indexFile, *simHashStr); err != nil {
+			fmt.Printf("Error: %v\n", err)
+			os.Exit(1)
+		}
+	
+	case "fuzzy":
+		// New fuzzy command logic
+		fuzzyFlags := flag.NewFlagSet("fuzzy", flag.ExitOnError)
+		indexFile := fuzzyFlags.String("i", "", "Index file path")
+		simHashStr := fuzzyFlags.String("h", "", "SimHash value for fuzzy search")
+		fuzzyFlags.Parse(args)
+
+		if *indexFile == "" || *simHashStr == "" {
+			fmt.Println("Error: -i and -h are required for fuzzy command")
+			os.Exit(1)
+		}
+
+		if err := internals.RunFuzzy(*indexFile, *simHashStr); err != nil {
 			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
