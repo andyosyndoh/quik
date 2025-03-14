@@ -27,6 +27,7 @@ func RunLookup(indexFile, simHashStr string) error {
 		return fmt.Errorf("original file %s not found", indexData.FileName)
 	}
 
+	//Parse the provided SimHash string into a uint64 value.
 	simHash, err := strconv.ParseUint(simHashStr, 16, 64)
 	if err != nil {
 		return fmt.Errorf("invalid SimHash value: %v", err)
