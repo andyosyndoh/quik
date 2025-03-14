@@ -21,6 +21,10 @@ func RunIndex(inputFile string, chunkSize int, outputFile string) error {
 		Index:     fi.index.m,
 	}
 
+	go func(indexdata IndexData) {
+		IndexFileDecoder(indexdata)
+	}(indexData)
+
 	// Create the output file to store the serialized index
 	dataFile, err := os.Create(outputFile)
 	if err != nil {
