@@ -1,6 +1,7 @@
 package internals
 
 import (
+	"encoding/gob"
 	"fmt"
 	"os"
 	"runtime"
@@ -23,5 +24,10 @@ func runIndex(inputFile string, chunkSize int, outputFile string) error {
 		return fmt.Errorf("error creating index file: %v", err)
 	}
 	defer dataFile.Close()
+
+	encoder := gob.NewEncoder(dataFile)
+	if err := encoder.Encode(indexData); err != nil {
+		return fmt.Errorf("error encoding index data: %v", err)
+	}
 	return nil
 }
