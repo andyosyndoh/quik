@@ -72,5 +72,5 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 	close(resultChannel)
 	<-collectorDone
 
-	// return nil
+	return nil
 }
