@@ -70,7 +70,7 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 	close(chunkChannel)
 	wg.Wait()
 	close(resultChannel)
-	// <-collectorDone
+	<-collectorDone
 
 	// return nil
 }
