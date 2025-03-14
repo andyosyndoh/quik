@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"textindexer/internals"
 )
 
 func main() {
@@ -39,6 +40,12 @@ func main() {
 			os.Exit(1)
 		}
 
+		if err := internals.RunIndex(*inputFile, *chunkSize, *outputFile); err != nil {
+			fmt.Printf("Error: %v\n", err)
+			os.Exit(1)
+		}
+		// internals.IndexFileDecoder(*outputFile)
+
 	case "lookup":
 		lookupFlags := flag.NewFlagSet("lookup", flag.ExitOnError)
 		indexFile := lookupFlags.String("i", "", "Index file path")
@@ -47,6 +54,11 @@ func main() {
 
 		if *indexFile == "" || *simHashStr == "" {
 			fmt.Println("Error: -i and -h are required for lookup command")
+			os.Exit(1)
+		}
+
+		if err := internals.RunLookup(*indexFile, *simHashStr); err != nil {
+			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
 
