@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func RunLookup(indexFile, simHashStr string) error {
@@ -24,6 +25,11 @@ func RunLookup(indexFile, simHashStr string) error {
 	//Verify that the original file referenced in the index still exists.
 	if _, err := os.Stat(indexData.FileName); os.IsNotExist(err) {
 		return fmt.Errorf("original file %s not found", indexData.FileName)
+	}
+
+	simHash, err := strconv.ParseUint(simHashStr, 16, 64)
+	if err != nil {
+		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
 
 	return nil
