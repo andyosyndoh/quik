@@ -82,6 +82,11 @@ func RunLookup(indexFile, simHashStr string) error {
 		// Ensure we extract at least 20 full words in the chunk to build a phrase for the chunk
 		phrase := strings.Join(words[:end], " ")
 
+		if phrase == "" {
+			end := min(len(chunkStr), 50)
+			phrase = chunkStr[:end]
+		}
+
 		fmt.Printf("Original file: %s\n", indexData.FileName)
 		fmt.Printf("Byte offset: %d\n", offset)
 		fmt.Printf("Phrase: %s\n", phrase)

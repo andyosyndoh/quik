@@ -1,0 +1,10 @@
+SimHash: a967dd4f9719e885
+  Byte offset: 0
+SimHash: deb15c186bdfdea5
+  Byte offset: 16
+SimHash: f697f4fb751a7f1
+  Byte offset: 32
+SimHash: 9880410785657103
+  Byte offset: 48
+SimHash: 3d7c4957a5770711
+  Byte offset: 64
