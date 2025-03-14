@@ -16,7 +16,7 @@ func TestBuildIndex(t *testing.T) {
 	}
 	defer os.Remove(testFilename) // Cleanup after test
 
-	// Initialize FileIndex with necessary parameters
+	// Initialize FileIndex with necessary parameter
 	fileIndex := &FileIndex{
 		numWorkers: 2,  // Use 2 worker goroutines for parallel processing
 		chunkSize:  16, // Read file in 16-byte chunks
