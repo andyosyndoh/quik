@@ -43,4 +43,5 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 			simhash |= 1 << i
 		}
 	}
+	return simhash
 }
