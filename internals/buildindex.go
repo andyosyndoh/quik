@@ -28,7 +28,11 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 		h.Reset()
 		h.Write([]byte(word))
 		hash := h.Sum64()
-		
+
 		for i := 0; i < 64; i++ {
+			if sums[i] >= 0 {
+				simhash |= 1 << i
+			}
+		}
 	}
 }
