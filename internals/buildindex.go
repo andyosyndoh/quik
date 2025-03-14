@@ -20,5 +20,5 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 	defer file.Close()
 
 	chunkChannel := make(chan chunkData, 1000)
-	// resultChannel := make(chan resultData, 1000)
+	resultChannel := make(chan resultData, 1000)
 }
