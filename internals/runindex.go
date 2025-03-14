@@ -7,29 +7,35 @@ import (
 	"runtime"
 )
 
+// RunIndex builds an index for the input file, validates the input, and serializes it to the output file.
+// It also starts a goroutine to process the index data concurrently using IndexFileDecoder.
 func RunIndex(inputFile string, chunkSize int, outputFile string) error {
-
+	// Validate input file
 	if err := ValidateInputFile(inputFile); err != nil {
 		return err
 	}
 
+	// Build the index
 	fi := NewFileIndex(chunkSize, runtime.NumCPU())
 	if err := fi.BuildIndex(inputFile); err != nil {
 		return fmt.Errorf("error building index: %v", err)
 	}
 
+	// Prepare the IndexData structure
 	indexData := IndexData{
 		FileName:  inputFile,
 		ChunkSize: chunkSize,
 		Index:     fi.index.m,
 	}
 
+	// Start a goroutine to process the index data concurrently
 	go func(data IndexData) {
 		if err := IndexFileDecoder(data); err != nil {
 			fmt.Printf("error in IndexFileDecoder: %v\n", err)
 		}
 	}(indexData)
 
+	// Serialize the index data to the output file
 	dataFile, err := os.Create(outputFile)
 	if err != nil {
 		return fmt.Errorf("error creating index file: %v", err)
