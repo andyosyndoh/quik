@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"runtime"
+	"sync"
 )
 
 type entry struct {
@@ -38,6 +39,7 @@ func IndexFileDecoder(indexData IndexData) error {
 		close(entries)
 	}()
 
-	 
+	var wg sync.WaitGroup
+	numWorkers := runtime.NumCPU()
 	return nil
 }
