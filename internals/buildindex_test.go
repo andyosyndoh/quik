@@ -11,10 +11,10 @@ func TestBuildIndex(t *testing.T) {
 	testFilename := "testfile.txt"
 	content := "This is a test file. It contains multiple words for indexing."
 	err := os.WriteFile(testFilename, []byte(content), 0644)
-	// if err != nil {
-	// 	t.Fatalf("Failed to create test file: %v", err)
-	// }
-	// defer os.Remove(testFilename) // Cleanup after test
+	if err != nil {
+		t.Fatalf("Failed to create test file: %v", err)
+	}
+	defer os.Remove(testFilename) // Cleanup after test
 
 	// // Initialize FileIndex with necessary parameters
 	// fileIndex := &FileIndex{
