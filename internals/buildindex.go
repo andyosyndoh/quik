@@ -68,7 +68,7 @@ func (fi *FileIndex) BuildIndex(filename string) error {
 		offset += int64(n)
 	}
 	close(chunkChannel)
-	// wg.Wait()
+	wg.Wait()
 	// close(resultChannel)
 	// <-collectorDone
 
