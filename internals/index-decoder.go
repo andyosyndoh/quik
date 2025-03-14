@@ -1,6 +1,7 @@
 package internals
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 )
@@ -16,5 +17,8 @@ func IndexFileDecoder(indexData IndexData) error {
 		return fmt.Errorf("error creating hash file: %w", err)
 	}
 	defer hashfile.Close()
+
+	writer := bufio.NewWriter(hashfile)
+	defer writer.Flush()
 	return nil
 }
