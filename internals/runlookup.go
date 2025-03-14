@@ -55,11 +55,32 @@ func RunLookup(indexFile, simHashStr string) error {
 		}
 		chunk = chunk[:n]
 
-		words := strings.Fields(string(chunk))
-		phrase := strings.Join(words, " ")
-		if len(phrase) > 50 {
-			phrase = phrase[:50] + "..."
+		// Convert chunk to string
+		chunkStr := string(chunk)
+
+		// Find first full word by skipping partial words
+		startIdx := 0
+		for startIdx < len(chunkStr) && (chunkStr[startIdx] != ' ' && chunkStr[startIdx] != '\n') {
+			startIdx++
 		}
+
+		// Skip the space to reach the first full word
+		if startIdx < len(chunkStr) {
+			startIdx++
+		}
+
+		// Extract words from the valid start point
+		words := strings.Fields(chunkStr[startIdx:])
+		wordCount := len(words)
+		
+		// Determine length of phrase (at least full wordCount, up to 20 words)
+		end := wordCount
+		if end > 12 {
+			end = 12
+		}
+
+		// Ensure we extract at least 20 full words in the chunk to build a phrase for the chunk
+		phrase := strings.Join(words[:end], " ")
 
 		fmt.Printf("Original file: %s\n", indexData.FileName)
 		fmt.Printf("Byte offset: %d\n", offset)
