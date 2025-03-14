@@ -8,7 +8,7 @@ import (
 )
 
 // runIndex builds an index for the input file and serializes it to the output file.
-func runIndex(inputFile string, chunkSize int, outputFile string) error {
+func RunIndex(inputFile string, chunkSize int, outputFile string) error {
 	fi := NewFileIndex(chunkSize, runtime.NumCPU())
 	if err := fi.BuildIndex(inputFile); err != nil {
 		return fmt.Errorf("error building index: %v", err)
