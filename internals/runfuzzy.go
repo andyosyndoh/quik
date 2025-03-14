@@ -20,5 +20,10 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	if err := decoder.Decode(&indexData); err != nil {
 		return fmt.Errorf("error decoding index data: %v", err)
 	}
+
+	// Check if the original file exists
+	if _, err := os.Stat(indexData.FileName); os.IsNotExist(err) {
+		return fmt.Errorf("original file %s not found", indexData.FileName)
+	}
 	return nil
 }
