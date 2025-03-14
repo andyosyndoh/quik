@@ -60,6 +60,12 @@ func RunLookup(indexFile, simHashStr string) error {
 		if len(phrase) > 50 {
 			phrase = phrase[:50] + "..."
 		}
+
+		fmt.Printf("Original file: %s\n", indexData.FileName)
+		fmt.Printf("Byte offset: %d\n", offset)
+		fmt.Printf("Phrase: %s\n", phrase)
+		fmt.Println("----------")
+
 	}
 	return nil
 }
