@@ -3,8 +3,10 @@ package internals
 import (
 	"encoding/gob"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // RunFuzzy performs a fuzzy search for SimHashes with a Hamming distance of 1 or 2.
@@ -41,7 +43,31 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	defer file.Close()
 
 	for hash, offsets := range indexData.Index {
+		distance := hammingdistance(simHash, hash)
+		if distance == 1 {
+			for _, offset := range offsets {
+				chunk := make([]byte, indexData.ChunkSize)
+				n, err := file.ReadAt(chunk, offset)
+				if err != nil && err != io.EOF {
+					return fmt.Errorf("error reading chunk at offset %d: %v", offset, err)
+				}
+				chunk = chunk[:n]
 
+				// Extract a phrase from the chunk
+				words := strings.Fields(string(chunk))
+				phrase := strings.Join(words, " ")
+				if len(phrase) > 50 {
+					phrase = phrase[:50] + "..."
+				}
+
+				// Display the result
+				fmt.Printf("Original file: %s\n", indexData.FileName)
+				fmt.Printf("SimHash: %x\n", hash) // Print the SimHash of the matching chunk
+				fmt.Printf("Byte offset: %d\n", offset)
+				fmt.Printf("Phrase: %s\n", phrase)
+				fmt.Println("----------")
+			}
+		}
 	}
 	return nil
 }
