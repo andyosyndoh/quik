@@ -42,9 +42,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	}
 	defer file.Close()
 
+	// check instances if close similarity
+	count := 0
 	for hash, offsets := range indexData.Index {
 		distance := hammingdistance(simHash, hash)
 		if distance == 1 {
+			count++
 			for _, offset := range offsets {
 				chunk := make([]byte, indexData.ChunkSize)
 				n, err := file.ReadAt(chunk, offset)
@@ -69,6 +72,11 @@ func RunFuzzy(indexFile, simHashStr string) error {
 			}
 		}
 	}
+
+	if count == 0 {
+		fmt.Println("No Nearly Similar Hashes found")
+	}
+	
 	return nil
 }
 
