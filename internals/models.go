@@ -12,6 +12,12 @@ type FileIndex struct {
 	numWorkers int
 }
 
+type IndexData struct {
+	FileName  string
+	ChunkSize int
+	Index     map[uint64][]int64
+}
+
 // NewIndex creates a new Index instance.
 func NewIndex() *Index {
 	return &Index{m: make(map[uint64][]int64)}
