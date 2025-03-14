@@ -21,5 +21,10 @@ func RunLookup(indexFile, simHashStr string) error {
 		return fmt.Errorf("error decoding index data: %v", err)
 	}
 
+	//Verify that the original file referenced in the index still exists.
+	if _, err := os.Stat(indexData.FileName); os.IsNotExist(err) {
+		return fmt.Errorf("original file %s not found", indexData.FileName)
+	}
+
 	return nil
 }
