@@ -58,5 +58,11 @@ func IndexFileDecoder(indexData IndexData) error {
 			}
 		}()
 	}
+
+	// Close output channel when all workers finish
+	go func() {
+		wg.Wait()
+		close(outputChan)
+	}()
 	return nil
 }
