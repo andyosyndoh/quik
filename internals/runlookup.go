@@ -83,10 +83,7 @@ func RunLookup(indexFile, simHashStr string) error {
 		phrase := strings.Join(words[:end], " ")
 
 		if phrase == "" {
-			end := len(chunkStr)
-			if end > 50 {
-				end = 50
-			}
+			end := min(len(chunkStr), 50)
 			phrase = chunkStr[:end]
 		}
 
