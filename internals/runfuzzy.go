@@ -1,6 +1,7 @@
 package internals
 
 import (
+	"encoding/gob"
 	"fmt"
 	"os"
 )
@@ -12,5 +13,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 		return fmt.Errorf("error opening index file: %v", err)
 	}
 	defer dataFile.Close()
+
+	// Decode the index data
+	var indexData IndexData
+	decoder := gob.NewDecoder(dataFile)
+	if err := decoder.Decode(&indexData); err != nil {
+		return fmt.Errorf("error decoding index data: %v", err)
+	}
 	return nil
 }
