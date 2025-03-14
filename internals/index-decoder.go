@@ -64,5 +64,13 @@ func IndexFileDecoder(indexData IndexData) error {
 		wg.Wait()
 		close(outputChan)
 	}()
+
+	// Write outputs to file
+	for output := range outputChan {
+		if _, err := writer.WriteString(output); err != nil {
+			return fmt.Errorf("error writing to hash file: %w", err)
+		}
+	}
+	
 	return nil
 }
