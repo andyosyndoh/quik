@@ -41,7 +41,17 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	defer file.Close()
 
 	for hash, offsets := range indexData.Index {
-		
+
 	}
 	return nil
+}
+
+func hammingdistance(a, b uint64) int {
+	distance := 0
+	for i := 0; i < 64; i++ {
+		if (a & (1 << i)) != (b & (1 << i)) {
+			distance++
+		}
+	}
+	return distance
 }
