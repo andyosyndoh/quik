@@ -29,8 +29,8 @@ func TestBuildIndex(t *testing.T) {
 		t.Fatalf("BuildIndex failed: %v", err)
 	}
 
-	// // Verify the index is populated
-	// if len(fileIndex.index.m) == 0 {
-	// 	t.Error("Index is empty, expected populated index data")
-	// }
+	// Verify the index is populated
+	if len(fileIndex.index.m) == 0 {
+		t.Error("Index is empty, expected populated index data")
+	}
 }
