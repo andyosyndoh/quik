@@ -7,6 +7,11 @@ import (
 	"runtime"
 )
 
+type entry struct {
+	simhash uint64
+	offsets []int64
+}
+
 // IndexFileDecoder decodes the index file and prints the metadata and index data.
 func IndexFileDecoder(indexData IndexData) error {
 	fmt.Printf("Original file: %s\n", indexData.FileName)
@@ -23,6 +28,10 @@ func IndexFileDecoder(indexData IndexData) error {
 	defer writer.Flush()
 
 	numWorkers := runtime.NumCPU()
+
+	entries := make(chan entry, len(indexData.Index))
+	outputChan := make(chan string, numWorkers*2)
+
 	for simhash, offsets := range indexData.Index {
 		fmt.Printf("SimHash: %x\n", simhash)
 		for _, offset := range offsets {
