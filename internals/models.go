@@ -12,6 +12,12 @@ type FileIndex struct {
 	numWorkers int
 }
 
+// IndexData represents the structure for storing index information.
+// It contains the following fields:
+// - FileName: the name of the file being indexed.
+// - ChunkSize: the size of each chunk in the file.
+// - Index: a map where the key is a uint64 representing the chunk identifier,
+//   and the value is a slice of int64 representing the positions within the chunk.
 type IndexData struct {
 	FileName  string
 	ChunkSize int
