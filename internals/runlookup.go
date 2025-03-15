@@ -9,6 +9,18 @@ import (
 	"strings"
 )
 
+// RunLookup performs a lookup operation on an index file using a provided SimHash string.
+// It opens the index file, decodes the index data, verifies the existence of the original file,
+// parses the SimHash string, and retrieves the byte offsets associated with the SimHash from the index.
+// For each byte offset, it reads a chunk from the original file, extracts a phrase, and prints the
+// original file name, byte offset, and the extracted phrase.
+//
+// Parameters:
+//   - indexFile: The path to the index file.
+//   - simHashStr: The SimHash string to lookup in the index.
+//
+// Returns:
+//   - error: An error if any step of the lookup process fails, otherwise nil.
 func RunLookup(indexFile, simHashStr string) error {
 	// Open the index file for reading.
 	dataFile, err := os.Open(indexFile)

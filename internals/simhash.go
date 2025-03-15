@@ -5,7 +5,14 @@ import (
 	"strings"
 )
 
-// computeSimHash generates a SimHash for the given data using a reusable hash.Hash64.
+// SimHash is a technique for quickly estimating how similar two sets are.
+// 
+// Parameters:
+// - data: The input data as a byte slice.
+// - h: A hash.Hash64 instance used to compute the hash of each word.
+//
+// Returns:
+// - A 64-bit unsigned integer representing the SimHash of the input data.
 func computeSimHash(data []byte, h hash.Hash64) uint64 {
 	var simhash uint64
 	var sums [64]int
@@ -38,4 +45,5 @@ func computeSimHash(data []byte, h hash.Hash64) uint64 {
 	}
 
 	return simhash
-}
+}// computeSimHash generates a SimHash for the given data using a reusable hash.Hash64.
+
