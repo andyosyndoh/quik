@@ -3,35 +3,32 @@
 
 ## Table of Contents
 
-## Table of Contents
-
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Algorithms and Techniques](#algorithms-and-techniques)
    - [SimHash](#simhash)
    - [Concurrency](#concurrency)
    - [Index Structure](#index-structure)
-4. [Installation](#installation)
-5. [Usage](#usage)
+4. [Installation and Usage](#installation)
    - [How to Run](#how-to-run)
    - [Indexing](#indexing-a-text-file)
    - [Lookup](#looking-up-content-by-simhash)
-6. [Output](#output)
+5. [Output](#output)
    - [Indexing](#indexing-output)
    - [Lookup](#lookup-output)
-7. [Implementation Details](#implementation-details)
+6. [Implementation Details](#implementation-details)
    - [File Processing](#file-processing)
    - [Index Serialization](#index-serialization)
-8. [Advanced Features](#advanced-features)
+7. [Advanced Features](#advanced-features)
    - [Parallel Processing](#parallel-processing)
    - [Fuzzy Search](#fuzzy-search)
-9. [Performance Insights](#performance-insights)
+8. [Performance Insights](#performance-insights)
     - [Memory Efficiency](#memory-efficiency)
     - [Scalability](#scalability)
-10. [Testing](#testing)
+9. [Testing](#testing)
     - [How to Run Unit Tests](#unit-tests)
-11. [Contributors](#contributors)
-12. [License](#license)
+10. [Contributors](#contributors)
+11. [License](#license)
 
 
 ## Introduction
