@@ -33,6 +33,7 @@
 11. [Contributors](#contributors)
 12. [License](#license)
 
+
 ## Introduction
 This program was developed to address the challenge of efficiently indexing and retrieving content from large text files. Traditional methods of text search can be slow and resource-intensive, especially when dealing with massive datasets. 
 
@@ -67,6 +68,57 @@ This document provides a detailed explanation of the tool, including the algorit
 - **Memory-Efficient Design**: Processes files in chunks without loading the entire file into memory, supporting arbitrarily large text files.
 
 - **Configurable Parameters**: Customize chunk size (`-s`) and worker count (based on CPU cores) for optimal performance tuning.
+
+## Algorithms and Techniques
+
+### SimHash Implementation
+
+TextIndexer uses the **SimHash algorithm**, a locality-sensitive hashing technique originally proposed by Moses Charikar. SimHash is particularly valuable for text processing because:
+
+- **Similarity Preservation**: Similar text chunks produce similar hash values.
+- **Fixed Output Size**: Regardless of input size, the output is always a fixed-length hash (64 bits).
+- **Efficient Comparison**: Hamming distance between hashes correlates with text similarity.
+
+Our implementation follows these steps:
+1. **Tokenization**: Text is split into words/tokens.
+2. **Weight Assignment**: Token frequencies are used as weights.
+3. **Feature Hashing**: Each token is hashed using the `FNV-1a` hash function (fast and non-cryptographic).
+4. **Vector Aggregation**: A 64-dimensional vector accumulates weighted contributions from each token.
+5. **Threshold Application**: The final hash is constructed by applying a threshold to each dimension.
+
+The implementation efficiently reuses hash function instances within goroutines to minimize memory allocations and improve performance.
+
+---
+
+### Concurrency Model
+
+TextIndexer employs a sophisticated concurrency model to maximize throughput:
+
+- **Producer-Consumer Pattern**: The main goroutine reads file chunks and feeds them to worker goroutines.
+- **Worker Pool**: Multiple worker goroutines process chunks in parallel.
+- **Fan-Out/Fan-In**: Chunk processing fans out to workers, and results fan back in to a collector.
+- **Synchronized Collection**: A dedicated collector goroutine aggregates results safely.
+
+This architecture ensures:
+- **Load Balancing**: Work is distributed evenly across available CPU cores.
+- **Resource Utilization**: Maximum CPU utilization without oversubscription.
+- **Minimal Contention**: Channel-based communication reduces lock contention.
+- **Controlled Memory Usage**: Buffered channels prevent unbounded memory growth.
+
+---
+
+### Index Structure
+
+The index data structure is designed for efficient storage and retrieval:
+
+- **Hash-to-Offset Mapping**: Uses a map with SimHash values as keys and byte offset slices as values.
+- **Metadata Inclusion**: Stores the original filename and chunk size for self-contained indexes.
+- **Multiple References**: Handles cases where the same SimHash appears in multiple locations.
+
+This structure offers:
+- **O(1) Lookup**: Constant-time access to byte offsets for any SimHash.
+- **Compact Representation**: Only essential data is stored.
+- **Serialization Support**: Compatible with Go's `gob` encoder for efficient persistence.
 
 
 
