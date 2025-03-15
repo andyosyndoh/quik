@@ -313,12 +313,12 @@ Phrase: gerprints for chunk similarity. ● The index shou...
 - Scalability: Designed to handle large datasets efficiently.
 
 ## Testing
-- To run the test and coverage for this project use the following command
+- To run the test and coverage for this project use the following command from the root directory.
 ```bash
 go test ./... -cover
 ```
 
-## Contributors
+## contributors
 - Anne Okingo - [GitHub Profile](https://github.com/Anne-Okingo)
 - Kennedy Ada - [GitHub Profile](https://github.com/adaken4)
 - Asman Malika - [GitHub Profile](https://github.com/Malika7188)
