@@ -148,7 +148,7 @@ Before building and running **TextIndexer**, ensure your system meets the follow
  ```
 This creates an executable binary named textindex in the current directory.
 
- ### Indexing a text
+ ### indexing-a-text-file
  To index a  your text file, use the following command strictly:
 
  ```bash
