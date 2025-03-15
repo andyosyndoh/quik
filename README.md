@@ -136,3 +136,32 @@ If you don’t already have Docker installed, follow these steps:
 
 
 
+
+
+
+ ## Output
+### Indexing Output
+
+When you run the indexing command, **TextIndexer** generates two output files:
+
+1. **Binary Index File** (`index.idx`):
+   - Contains the serialized index data, including SimHash values and byte offsets.
+   - Used for fast lookups.
+
+2. **Human-Readable File** (`simhash.txt`):
+   - Lists all SimHash values and their corresponding byte offsets.
+
+**Example Command**:
+```bash
+go run . -c index -i gb.txt -s 4096 -o index.idx
+```
+
+**Example Output**:
+```bash
+Original file: gb.txt
+Chunk size: 4096 bytes
+SimHash values and byte offsets written to simhash.txt
+```
+
+
+
