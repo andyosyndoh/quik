@@ -174,26 +174,21 @@ This creates an executable binary named textindex in the current directory.
 To look up content using a SimHash value, use the lookup command strictly:
 
  ```bash
-./textindexer -c lookup -i index.idx -h <simhash_value>
+./textindex -c lookup -i index.idx -h <simhash_value>
  ```
  where
 ```
- -c index: Specifies the indexing command.
+-c lookup: Specifies the lookup command.
 
- -i <input_file.txt>: Path to the input text file (must be a .txt file).
+-i index.idx: Path to the index file(the binary file from indexing).
 
- -s <chunk_size>: Size of each chunk in bytes (default: 4096).
-
- -o <index_file.idx>: Path to save the generated index file(which is a binary file).
+-h <simhash_value>: SimHash value to look up (in hexadecimal format) which you can retrieve from the file simhash.txt after the indexing.
 ```
 
 **Example Command**:
 ```bash
-./textindex -c index -i sample.txt -s 4096 -o index.idx
+./textindex -c lookup -i index.idx -h 3e4f1b2c98a6
 ```
-
-
-
 
  ## Output
 ### Indexing Output
@@ -239,4 +234,81 @@ Byte offset: 16384
 Phrase: This command finds the position of the chunk with the given SimHash
 ----------
 ```
+
+## Advanced Features
+
+### Parallel Processing
+
+**TextIndexer** leverages Go’s powerful concurrency model to maximize performance:
+
+- **Worker Pool**: Multiple goroutines process chunks of the input file in parallel, ensuring efficient utilization of multi-core CPUs.
+- **Load Balancing**: Work is distributed evenly across available CPU cores, preventing bottlenecks.
+- **Efficient Resource Utilization**: Ensures maximum CPU usage without oversubscription, making indexing faster for large files.
+
+**How It Works**:
+1. The input file is divided into fixed-size chunks.
+2. Each chunk is processed by a separate goroutine to compute its SimHash.
+3. Results are collected and aggregated into the final index.
+
+**Benefits**:
+- **Faster Indexing**: Parallel processing significantly reduces the time required to index large files.
+- **Scalability**: Handles larger files efficiently by utilizing available CPU cores.
+
+---
+
+### Fuzzy Search
+
+**TextIndexer** supports **fuzzy search** for near-matching SimHash values, enabling approximate matching of text chunks:
+
+- **Hamming Distance**: Compares SimHash values to find chunks with similar content.
+- **Approximate Matching**: Retrieves chunks that are close to the provided SimHash value, even if they are not an exact match.
+- **Configurable Threshold**: Users can specify a Hamming distance threshold to control the level of similarity.
+
+**How It Works**:
+1. The user provides a SimHash value and a Hamming distance threshold.
+2. **TextIndexer** searches the index for SimHash values within the specified threshold.
+3. Returns all matching chunks along with their positions in the original file.
+
+**Example Command**:
+```bash
+./textindexer -c fuzzy -i index.idx -h 6f39d09b418d006
+```
+where
+```
+-c fuzzy: Specifies the fuzzy search command.
+
+-i index.idx: Path to the index file.
+
+-h 6f39d09b418d006: SimHash value to search for.
+
+-d 5: Hamming distance threshold (maximum allowed difference between SimHash values).
+```
+
+**Example Output**:
+```bash
+Original file: gb.txt
+SimHash: 6f39d09b418d006
+Byte offset: 16384
+Phrase: ... This command finds the position of the chunk w...
+----------
+Original file: gb.txt
+SimHash: 6f39c0bb418d006
+Byte offset: 49152
+Phrase: gerprints for chunk similarity. ● The index shou...
+----------
+```
+
+## Use Cases:
+
+- Near-Duplicate Detection: Find text chunks that are almost identical.
+
+- Similarity Search: Retrieve chunks with similar content, even if they are not exact matches.
+
+**Why These Features Matter**
+
+- Performance: Parallel processing ensures fast indexing, even for large files.
+
+- Flexibility: Fuzzy search allows for approximate matching, expanding the tool’s use cases.
+
+- Scalability: Designed to handle large datasets efficiently.
 
