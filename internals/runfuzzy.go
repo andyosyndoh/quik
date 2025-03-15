@@ -50,6 +50,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 		return fmt.Errorf("invalid SimHash value: %v", err)
 	}
 
+	//Lookup the SimHash in the index to retrieve the byte offsets
+	_, exists := indexData.Index[simHash]
+	if !exists {
+		return fmt.Errorf("SimHash not found in index: Ensure the file was indexed beforelooking up.")
+	}
+
 	// Open the original file
 	file, err := os.Open(indexData.FileName)
 	if err != nil {
