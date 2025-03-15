@@ -130,28 +130,44 @@ Before building and running **TextIndexer**, ensure your system meets the follow
 - **Disk Space**: Sufficient space to store the input text file and the generated index.
 
 ---
-### How to Run 
+### How to Run
 
-### Step 1: 
-Open the terminal and navigate to the extracted `quik` directory
+#### Step 1: Open the Terminal and Navigate to the Extracted Directory
 
-for example...
+1. Open a terminal.
 
-   ```bash
+2. Navigate to the extracted `quik` directory. For example:
+
+```bash
    cd /path/to/extracted/quik
-   ```
-
+```
    
 ### Step 2: Build the Executable Binary
 ```bash
  go build -o textindexer main.go 
  ```
+This creates an executable binary named textindexer in the current directory.
+
  ### Indexing
- Strictly use the command below to start indexing your input file which **MUST** be a **.txt** file
+ To index a  your text file, use the following command strictly:
 
  ```bash
- ./textindex -c index -i large_text.txt -s 4096 -o index.idx
+ ./textindex -c index -i <input_file.txt> -s <chunk_size> -o <index_file.idx>
  ```
+```
+ -c index: Specifies the indexing command.
+
+ -i <input_file.txt>: Path to the input text file (must be a .txt file).
+
+ -s <chunk_size>: Size of each chunk in bytes (default: 4096).
+
+ -o <index_file.idx>: Path to save the generated index file(which is a binary file).
+```
+
+**Example Command**:
+```bash
+./textindex -c index -i sample.txt -s 4096 -o index.idx
+```
 
 
 
