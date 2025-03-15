@@ -78,6 +78,6 @@ func IndexFileDecoder(indexData IndexData) error {
 			return fmt.Errorf("error writing to hash file: %w", err)
 		}
 	}
-	
+
 	return nil
 }

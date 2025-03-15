@@ -84,7 +84,7 @@ func RunLookup(indexFile, simHashStr string) error {
 		// Extract words from the valid start point
 		words := strings.Fields(chunkStr[startIdx:])
 		wordCount := len(words)
-		
+
 		// Determine length of phrase (at least full wordCount, up to 20 words)
 		end := wordCount
 		if end > 12 {

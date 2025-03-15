@@ -43,7 +43,7 @@ func TestRunFuzzy_ErrorCases(t *testing.T) {
 func TestRunFuzzy_Success(t *testing.T) {
 	indexFile := "test_index.gob"
 	originalFile := "test_original.txt"
-	simHash := "123abc" // Test input hash
+	simHash := "123abc"             // Test input hash
 	hashInIndex := uint64(0x123abd) // Close to simHash (Hamming distance = 1)
 
 	// Create original file
