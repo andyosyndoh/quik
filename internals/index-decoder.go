@@ -14,7 +14,14 @@ type entry struct {
 	offsets []int64
 }
 
-// IndexFileDecoder decodes the index file and prints the metadata and index data.
+// IndexFileDecoder processes the given IndexData and writes SimHash values and their byte offsets to a file named "simhash.txt".
+// It utilizes a worker pool to handle the processing concurrently.
+//
+// Parameters:
+//   - indexData: The IndexData containing the file name, chunk size, and index map of SimHash values to byte offsets.
+//
+// Returns:
+//   - error: An error if any occurs during file creation or writing, otherwise nil.
 func IndexFileDecoder(indexData IndexData) error {
 	fmt.Printf("Original file: %s\n", indexData.FileName)
 	fmt.Printf("Chunk size: %d bytes\n", indexData.ChunkSize)
