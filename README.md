@@ -6,29 +6,26 @@
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Algorithms and Techniques](#algorithms-and-techniques)
-   - [SimHash](#simhash)
+   - [SimHash](#simhash-implementation)
    - [Concurrency](#concurrency)
    - [Index Structure](#index-structure)
-4. [Installation and Usage](#installation)
+4. [Installation and Usage](#installation-and-usage)
    - [How to Run](#how-to-run)
    - [Indexing](#indexing-a-text-file)
    - [Lookup](#looking-up-content-by-simhash)
 5. [Output](#output)
    - [Indexing](#indexing-output)
    - [Lookup](#lookup-output)
-6. [Implementation Details](#implementation-details)
-   - [File Processing](#file-processing)
-   - [Index Serialization](#index-serialization)
-7. [Advanced Features](#advanced-features)
+6. [Advanced Features](#advanced-features)
    - [Parallel Processing](#parallel-processing)
    - [Fuzzy Search](#fuzzy-search)
-8. [Performance Insights](#performance-insights)
+7. [Performance Insights](#performance-insights)
     - [Memory Efficiency](#memory-efficiency)
     - [Scalability](#scalability)
-9. [Testing](#testing)
+8. [Testing](#testing)
     - [How to Run Unit Tests](#unit-tests)
-10. [Contributors](#contributors)
-11. [License](#license)
+9. [Contributors](#contributors)
+10. [License](#license)
 
 
 ## Introduction
@@ -87,7 +84,7 @@ The implementation efficiently reuses hash function instances within goroutines 
 
 ---
 
-### Concurrency Model
+### Concurrency
 
 TextIndexer employs a sophisticated concurrency model to maximize throughput:
 
@@ -116,6 +113,26 @@ This structure offers:
 - **O(1) Lookup**: Constant-time access to byte offsets for any SimHash.
 - **Compact Representation**: Only essential data is stored.
 - **Serialization Support**: Compatible with Go's `gob` encoder for efficient persistence.
+
+## Installation and Usage
+
+This guide provides detailed instructions for installing and using **TextIndexer** with Docker, making it easy to run without installing Go or managing dependencies on your local machine.
+
+---
+
+### Using Docker
+
+#### Step 1: Install Docker
+
+If you don’t already have Docker installed, follow these steps:
+
+1. **Install Docker**:
+   - For Linux, macOS, or Windows, download Docker from the [official website](https://www.docker.com/get-started).
+   - Follow the installation instructions for your operating system.
+
+2. **Verify Installation**:
+   ```bash
+   docker --version
 
 
 
