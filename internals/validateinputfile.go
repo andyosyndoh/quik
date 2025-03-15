@@ -7,7 +7,18 @@ import (
 	"strings"
 )
 
-// validateInputFile checks if the input file exists, is a .txt file, and is not empty.
+// ValidateInputFile checks if the provided input file meets certain criteria.
+// It returns an error if any of the following conditions are met:
+// - The file does not exist.
+// - There is an error retrieving the file information.
+// - The file is empty.
+// - The file is not a .txt file.
+//
+// Parameters:
+// - inputFile: The path to the input file to be validated.
+//
+// Returns:
+// - An error if the input file does not meet the criteria, otherwise nil.
 func ValidateInputFile(inputFile string) error {
 	fileInfo, err := os.Stat(inputFile)
 	if os.IsNotExist(err) {
