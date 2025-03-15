@@ -10,6 +10,7 @@
    - [Concurrency](#concurrency)
    - [Index Structure](#index-structure)
 4. [Installation and Usage](#installation-and-usage)
+   - [Dependencies](#dependencies)
    - [How to Run](#how-to-run)
    - [Indexing](#indexing-a-text-file)
    - [Lookup](#looking-up-content-by-simhash)
@@ -114,27 +115,37 @@ This structure offers:
 - **Compact Representation**: Only essential data is stored.
 - **Serialization Support**: Compatible with Go's `gob` encoder for efficient persistence.
 
+
 ## Installation and Usage
 
-This guide provides detailed instructions for installing and using **TextIndexer** with Docker, making it easy to run without installing Go or managing dependencies on your local machine.
+These are detailed instructions for installing and using **TextIndexer**
+Follow these steps to build the executable binary and run the tool for indexing, lookup, and fuzzy search.
 
 ---
 
-### Using Docker
+### Dependencies
 
-#### Step 1: Install Docker
+Before building and running **TextIndexer**, ensure your system meets the following requirements:
 
-If you don’t already have Docker installed, follow these steps:
+- **Go**: Version 1.21 or higher (as specified in `go.mod`).
+- **Operating System**: Linux, macOS, or Windows.
+- **Memory**: At least 2GB of RAM (recommended for large files).
+- **Disk Space**: Sufficient space to store the input text file and the generated index.
 
-1. **Install Docker**:
-   - For Linux, macOS, or Windows, download Docker from the [official website](https://www.docker.com/get-started).
-   - Follow the installation instructions for your operating system.
+---
+### How to Run 
 
-2. **Verify Installation**:
+### Step 1: 
+Open the terminal and navigate to the extracted `quik` directory
+
+for example...
+
    ```bash
-   docker --version
+   cd /path/to/extracted/quik
+   ```
 
-
+   
+### Step 2: Build the Executable Binary
 
 
 
