@@ -146,7 +146,7 @@ Before building and running **TextIndexer**, ensure your system meets the follow
 ```bash
  go build -o textindex main.go 
  ```
-This creates an executable binary named textindexer in the current directory.
+This creates an executable binary named textindex in the current directory.
 
  ### Indexing a text
  To index a  your text file, use the following command strictly:
