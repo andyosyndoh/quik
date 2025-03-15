@@ -1,0 +1,687 @@
+SimHash: ef5c1191553f1ac
+  Byte offset: 1363968
+SimHash: 9f5d919b452f1ac
+  Byte offset: 1642496
+SimHash: 2ef5591f3552e1ac
+  Byte offset: 479232
+SimHash: ef719193541f38c
+  Byte offset: 1167360
+SimHash: 8f5c9190551f13c
+  Byte offset: 2301952
+SimHash: 2ff5c1199504f0ac
+  Byte offset: 1822720
+SimHash: ef1c9191471d1ec
+  Byte offset: 217088
+SimHash: 4f1c8191551f1cc
+  Byte offset: 1142784
+SimHash: a75d9193553716c
+  Byte offset: 1527808
+SimHash: af5590d1550f11c
+  Byte offset: 2256896
+SimHash: cf1c10d3541f1cc
+  Byte offset: 176128
+SimHash: 8f1111fb550f18c
+  Byte offset: 516096
+SimHash: af5a9193460f1ec
+  Byte offset: 909312
+SimHash: ef5910b9552f184
+  Byte offset: 1077248
+SimHash: 2cf5011b1554e3ac
+  Byte offset: 1261568
+SimHash: af54819b516f16c
+  Byte offset: 1732608
+SimHash: 8951f07b55c0aea
+  Byte offset: 1982464
+SimHash: 4ef5c1193532d1ac
+  Byte offset: 151552
+SimHash: cf599193575f1ec
+  Byte offset: 159744
+SimHash: ef5d91d3542d1ec
+  Byte offset: 520192
+SimHash: cf5c91d3556f1ec
+  Byte offset: 1413120
+SimHash: 4491961820701fca
+  Byte offset: 2134016
+SimHash: ef5d9093555d14c
+  Byte offset: 2240512
+SimHash: ef541193542d1cc
+  Byte offset: 598016
+SimHash: bf199191558e0ac
+  Byte offset: 794624
+SimHash: fb5111fb55ae1bc
+  Byte offset: 1183744
+SimHash: cf5c9093555d53c
+  Byte offset: 2039808
+SimHash: 46f5c9190541d15c
+  Byte offset: 2105344
+SimHash: 8f75919b552e1ec
+  Byte offset: 1277952
+SimHash: af1e119145cf3ae
+  Byte offset: 1282048
+SimHash: ef5490d3554d50c
+  Byte offset: 2117632
+SimHash: 8f7d90fb550c18c
+  Byte offset: 2174976
+SimHash: 8f75909b54450ec
+  Byte offset: 675840
+SimHash: cf5c9193552e1ec
+  Byte offset: 720896
+SimHash: af51b1bb540f1ec
+  Byte offset: 987136
+SimHash: 8f14919f550f1ac
+  Byte offset: 1265664
+SimHash: 6f5c9193550d12c
+  Byte offset: 2011136
+SimHash: 8f3d9191577c08c
+  Byte offset: 573440
+SimHash: 4ab5b80b3573f1cc
+  Byte offset: 1253376
+SimHash: af760193506e1ac
+  Byte offset: 1437696
+SimHash: ef17919b542f12c
+  Byte offset: 1540096
+SimHash: ef7911b3554f1ec
+  Byte offset: 1691648
+SimHash: 8f5c919b505f1ec
+  Byte offset: 1867776
+SimHash: af101193556e1ec
+  Byte offset: 753664
+SimHash: 8f5d9193543f1ac
+  Byte offset: 819200
+SimHash: ef5d8199555d12c
+  Byte offset: 2113536
+SimHash: ef381193556e3ac
+  Byte offset: 716800
+SimHash: ef5d91d3550f1ac
+  Byte offset: 1150976
+SimHash: ef759191512f18c
+  Byte offset: 1482752
+SimHash: 9f119193554f0e4
+  Byte offset: 454656
+SimHash: cf5d91b1541f02c
+  Byte offset: 933888
+SimHash: 2ef7d9199551f18c
+  Byte offset: 1552384
+SimHash: ef3d9191534f3cc
+  Byte offset: 1949696
+SimHash: 42f3d1193451f3ec
+  Byte offset: 212992
+SimHash: 4ef599191531d5ac
+  Byte offset: 352256
+SimHash: a7141193552f1ac
+  Byte offset: 552960
+SimHash: ef799193563e1ec
+  Byte offset: 880640
+SimHash: cf559193542f17c
+  Byte offset: 1388544
+SimHash: af5d119155ef1e4
+  Byte offset: 1593344
+SimHash: cf1091b3562e1cc
+  Byte offset: 344064
+SimHash: 2df5d9199571f3ec
+  Byte offset: 1556480
+SimHash: af5c91d9561e1ac
+  Byte offset: 942080
+SimHash: af5d9191565f16c
+  Byte offset: 1724416
+SimHash: ef5c91d3570e18c
+  Byte offset: 1122304
+SimHash: 4f719193565e1ec
+  Byte offset: 348160
+SimHash: af1581bb541d1cc
+  Byte offset: 430080
+SimHash: 8f5d919b512f0a4
+  Byte offset: 327680
+SimHash: ef7c9193552f16c
+  Byte offset: 1138688
+SimHash: af319091542c18c
+  Byte offset: 360448
+SimHash: 8f5990f3558f0e4
+  Byte offset: 847872
+SimHash: cf1d90d3542f1cc
+  Byte offset: 1118208
+SimHash: cf599199551d1ec
+  Byte offset: 1155072
+SimHash: 6cf589191521f1ec
+  Byte offset: 1781760
+SimHash: eb5c819b550710c
+  Byte offset: 2347008
+SimHash: cf5490db540f08c
+  Byte offset: 651264
+SimHash: af5c9193472c1ec
+  Byte offset: 856064
+SimHash: cf7d109155ef1ac
+  Byte offset: 860160
+SimHash: ef5511db560f1ac
+  Byte offset: 1515520
+SimHash: ef5d9193548f1ac
+  Byte offset: 1617920
+SimHash: af449190553f16c
+  Byte offset: 2252800
+SimHash: ef549191455d12c
+  Byte offset: 2277376
+SimHash: 29f7991db555e0ec
+  Byte offset: 167936
+SimHash: cf5091bb552f0ac
+  Byte offset: 503808
+SimHash: eb34119b512e1ac
+  Byte offset: 765952
+SimHash: 4ef5c919955dd1cc
+  Byte offset: 1003520
+SimHash: 2ff5c9193576f1cc
+  Byte offset: 1679360
+SimHash: ef5c919b473d1cc
+  Byte offset: 114688
+SimHash: 46f5c9191520f1ec
+  Byte offset: 618496
+SimHash: af519193540d1ec
+  Byte offset: 638976
+SimHash: 4cf5c9191577f1ec
+  Byte offset: 1658880
+SimHash: cf7c9199557f16c
+  Byte offset: 1900544
+SimHash: af5490f3550d12c
+  Byte offset: 2162688
+SimHash: cf5c9193503e1ec
+  Byte offset: 237568
+SimHash: 9f5791d3555f1ac
+  Byte offset: 1048576
+SimHash: af5d91d3552f1ec
+  Byte offset: 1069056
+SimHash: 4ef599199575f0ac
+  Byte offset: 1404928
+SimHash: ff1981d155af08c
+  Byte offset: 1519616
+SimHash: cf7990b1554d12c
+  Byte offset: 733184
+SimHash: 4cf5b919157051ae
+  Byte offset: 741376
+SimHash: 8b1010b3555f084
+  Byte offset: 806912
+SimHash: 4cf5d9193550f16c
+  Byte offset: 917504
+SimHash: df1781d355af18c
+  Byte offset: 1286144
+SimHash: 2ef5d9193451e18c
+  Byte offset: 1560576
+SimHash: ef719193501f2a4
+  Byte offset: 1351680
+SimHash: ef5491f9541f15c
+  Byte offset: 1998848
+SimHash: bb791193542e1ac
+  Byte offset: 532480
+SimHash: cf5d9193507e1ec
+  Byte offset: 1015808
+SimHash: ef599193444c1ec
+  Byte offset: 1028096
+SimHash: ef7511d3517f1ec
+  Byte offset: 1126400
+SimHash: e77c10f3552f184
+  Byte offset: 1302528
+SimHash: cf5c9199551e1ac
+  Byte offset: 1851392
+SimHash: 4ef5c9190555d13c
+  Byte offset: 2088960
+SimHash: 4cb549193544d1bc
+  Byte offset: 2207744
+SimHash: 4ef7d9192463d0a4
+  Byte offset: 200704
+SimHash: cf399193550f3ac
+  Byte offset: 593920
+SimHash: 8f3d1193570f12c
+  Byte offset: 626688
+SimHash: cf119193540c1e4
+  Byte offset: 749568
+SimHash: ef541199552f108
+  Byte offset: 1941504
+SimHash: 8f3d9193562e1ec
+  Byte offset: 798720
+SimHash: ef5c1193453f18c
+  Byte offset: 1298432
+SimHash: ef7d9191562f1ac
+  Byte offset: 1576960
+SimHash: cfdd11db542e1ac
+  Byte offset: 385024
+SimHash: 8f1190b3512e2c4
+  Byte offset: 499712
+SimHash: 9f5d919156de0ec
+  Byte offset: 507904
+SimHash: cf5c9191560e1ec
+  Byte offset: 946176
+SimHash: 2ff5c1193516e06c
+  Byte offset: 1630208
+SimHash: af55919045ef18c
+  Byte offset: 2322432
+SimHash: 46f799193507f16c
+  Byte offset: 188416
+SimHash: af111193550e0ec
+  Byte offset: 585728
+SimHash: af7c919b540e1bc
+  Byte offset: 1789952
+SimHash: 4cf7591fb55cf5fc
+  Byte offset: 1249280
+SimHash: af5a9193542f1cc
+  Byte offset: 94208
+SimHash: cf5811db502e18c
+  Byte offset: 655360
+SimHash: ef5d91d1461f16c
+  Byte offset: 1146880
+SimHash: 8f1691db552d18c
+  Byte offset: 1421312
+SimHash: 8f5c90d3572d16c
+  Byte offset: 2068480
+SimHash: ef5c91b3556f1ac
+  Byte offset: 155648
+SimHash: cf5d9193442d52c
+  Byte offset: 544768
+SimHash: ef799193543d1ac
+  Byte offset: 1056768
+SimHash: ef5d11d3542f18c
+  Byte offset: 1163264
+SimHash: ef599193562d18c
+  Byte offset: 110592
+SimHash: aff19193552f16c
+  Byte offset: 561152
+SimHash: 4ef54919b505f06c
+  Byte offset: 1814528
+SimHash: af5c91f3556d1ac
+  Byte offset: 2023424
+SimHash: ef4d9193557d10c
+  Byte offset: 2334720
+SimHash: ef1d9193402f1ac
+  Byte offset: 647168
+SimHash: cb5c0193543f1cc
+  Byte offset: 1171456
+SimHash: ef5c9191516f1ec
+  Byte offset: 1478656
+SimHash: cf7d9193551f184
+  Byte offset: 1581056
+SimHash: cf5d9193540f1ec
+  Byte offset: 991232
+SimHash: b7591193522e1ac
+  Byte offset: 1228800
+SimHash: 49f921804501f8b
+  Byte offset: 2129920
+SimHash: ae5191db542e38c
+  Byte offset: 438272
+SimHash: cf1b9193560d16c
+  Byte offset: 135168
+SimHash: cf5591d3542f1ec
+  Byte offset: 1130496
+SimHash: 4ff599191523e1ec
+  Byte offset: 1646592
+SimHash: ef5c9191541e1ac
+  Byte offset: 1773568
+SimHash: af5c9098551d13c
+  Byte offset: 2265088
+SimHash: bf1411d3552f1ac
+  Byte offset: 1609728
+SimHash: 4ef7b9191573f3cc
+  Byte offset: 1654784
+SimHash: 8f4590f3552f10c
+  Byte offset: 1994752
+SimHash: 8f5490f3545d14c
+  Byte offset: 2080768
+SimHash: cf5c80d3555f1ac
+  Byte offset: 2015232
+SimHash: eb1c8193540f10c
+  Byte offset: 2351104
+SimHash: 4df1b919155fd2a4
+  Byte offset: 53248
+SimHash: cf5d91d1543d0ac
+  Byte offset: 729088
+SimHash: cf5c8193562d1ec
+  Byte offset: 782336
+SimHash: df1d9193563f1ec
+  Byte offset: 954368
+SimHash: 8f5c00da551f9ac
+  Byte offset: 2260992
+SimHash: af799193566d12c
+  Byte offset: 471040
+SimHash: ef199193544f1ec
+  Byte offset: 712704
+SimHash: ef5d9191537f0ac
+  Byte offset: 983040
+SimHash: c705809b562e1ac
+  Byte offset: 1110016
+SimHash: 4ef5c9191517f0ac
+  Byte offset: 1712128
+SimHash: cf549199544f16c
+  Byte offset: 2289664
+SimHash: ff7d1191514f16c
+  Byte offset: 1810432
+SimHash: c23b43a139832fa4
+  Byte offset: 8192
+SimHash: cf591193512c0ec
+  Byte offset: 241664
+SimHash: ef54109b556f084
+  Byte offset: 684032
+SimHash: ef759199502f0a4
+  Byte offset: 1314816
+SimHash: 48b5d1191534f0bc
+  Byte offset: 1871872
+SimHash: 8f5c10d9554d10c
+  Byte offset: 2195456
+SimHash: 2cf7d9191552c1ec
+  Byte offset: 1638400
+SimHash: ef1d91d3540e3ac
+  Byte offset: 413696
+SimHash: af58919b555f0cc
+  Byte offset: 1757184
+SimHash: 6f389193575d18c
+  Byte offset: 221184
+SimHash: 4ef5d1191555f1ac
+  Byte offset: 778240
+SimHash: ef55909b442f18c
+  Byte offset: 802816
+SimHash: 4ff599191571e1ac
+  Byte offset: 1245184
+SimHash: ef5d1191541f1ec
+  Byte offset: 1802240
+SimHash: ef7c9193504f1ec
+  Byte offset: 1839104
+SimHash: 46f5c91b0550f15c
+  Byte offset: 2109440
+SimHash: 4cf3d119151df284
+  Byte offset: 49152
+SimHash: 8b5c11bb550f12c
+  Byte offset: 1880064
+SimHash: 6f5c9191541d52c
+  Byte offset: 2121728
+SimHash: cf5e91d3450d1cc
+  Byte offset: 163840
+SimHash: 6cf5d1190553f1ec
+  Byte offset: 229376
+SimHash: e71501d1512e28c
+  Byte offset: 389120
+SimHash: ef599193450f1ac
+  Byte offset: 708608
+SimHash: 8f1591d3540f1ec
+  Byte offset: 1376256
+SimHash: cf5c919b550d12c
+  Byte offset: 2342912
+SimHash: cf1f1199557f1ac
+  Byte offset: 102400
+SimHash: 8f5e919b549f024
+  Byte offset: 315392
+SimHash: cb5d1193557f1ac
+  Byte offset: 548864
+SimHash: 8f5d80d3452f38c
+  Byte offset: 634880
+SimHash: ef3d9191572f1ec
+  Byte offset: 1572864
+SimHash: cf5d9193552e1ac
+  Byte offset: 1613824
+SimHash: ef7b8193552f1ec
+  Byte offset: 1835008
+SimHash: ef399193463e1ec
+  Byte offset: 1916928
+SimHash: cf7d9191563f1ec
+  Byte offset: 307200
+SimHash: af1d919b552f1ac
+  Byte offset: 864256
+SimHash: af709193552f1ac
+  Byte offset: 1097728
+SimHash: ef599193562f1ac
+  Byte offset: 1753088
+SimHash: 7ef5c9191401f16c
+  Byte offset: 1806336
+SimHash: 44f5d9191453d1ec
+  Byte offset: 1925120
+SimHash: cf899193573c3cc
+  Byte offset: 2035712
+SimHash: af5c9191557d12c
+  Byte offset: 2060288
+SimHash: ef5d9193561e16c
+  Byte offset: 1544192
+SimHash: cf799193542e1cc
+  Byte offset: 1744896
+SimHash: e71c9193510f1ec
+  Byte offset: 1888256
+SimHash: 494b51825583d19
+  Byte offset: 2142208
+SimHash: ef5c9193545f18c
+  Byte offset: 2273280
+SimHash: af5c9193543d1ec
+  Byte offset: 303104
+SimHash: cf1510db550f1ac
+  Byte offset: 663552
+SimHash: 8f149193550f1cc
+  Byte offset: 1761280
+SimHash: 4ef741193506f0ac
+  Byte offset: 32768
+SimHash: 4df1a11d3538e08c
+  Byte offset: 36864
+SimHash: ef5f9193550f1fc
+  Byte offset: 204800
+SimHash: f7d119353fdaae
+  Byte offset: 323584
+SimHash: cf7d919b542d3cc
+  Byte offset: 835584
+SimHash: 9f1381d3554f1ac
+  Byte offset: 913408
+SimHash: ff5d91b1571d1ac
+  Byte offset: 1449984
+SimHash: ef198193542e1ec
+  Byte offset: 671744
+SimHash: 8f5490db542e1ec
+  Byte offset: 1511424
+SimHash: 48f599191545f0ec
+  Byte offset: 897024
+SimHash: 2af591193516f1ec
+  Byte offset: 905216
+SimHash: 8f781193517f2ec
+  Byte offset: 1826816
+SimHash: 8f5d909b512e12c
+  Byte offset: 1470464
+SimHash: cb5d8191551d18c
+  Byte offset: 1908736
+SimHash: ef1e91b3562d1ec
+  Byte offset: 831488
+SimHash: cf181193510f02c
+  Byte offset: 876544
+SimHash: ff7c91d3552d1ac
+  Byte offset: 1425408
+SimHash: ef7d9191527f1ec
+  Byte offset: 1089536
+SimHash: ef5c9199540f1ec
+  Byte offset: 1597440
+SimHash: bf5d9193541d1ec
+  Byte offset: 1830912
+SimHash: ef5c9193441d15c
+  Byte offset: 1961984
+SimHash: 8bdc91b3540f1ec
+  Byte offset: 888832
+SimHash: ef599199541c28c
+  Byte offset: 401408
+SimHash: 44f5c9191551d16c
+  Byte offset: 2203648
+SimHash: ef7d919b562f1ec
+  Byte offset: 147456
+SimHash: 4cf5c90db550d1a4
+  Byte offset: 253952
+SimHash: af1c8193552f0ac
+  Byte offset: 843776
+SimHash: ef5c9191540f17c
+  Byte offset: 1662976
+SimHash: cf5d91d1555e1ac
+  Byte offset: 1339392
+SimHash: 8f15c1fb550c18c
+  Byte offset: 2363392
+SimHash: 8f5b119b502f1ee
+  Byte offset: 24576
+SimHash: 4af5c9193551d1ec
+  Byte offset: 184320
+SimHash: af7d9193554f3cc
+  Byte offset: 724992
+SimHash: ef76109b442f1cc
+  Byte offset: 172032
+SimHash: cf5d119b571d0a4
+  Byte offset: 737280
+SimHash: af1f909b556e3f4
+  Byte offset: 688128
+SimHash: ef5d11d3550f3fc
+  Byte offset: 1134592
+SimHash: 4ef5d9191475d56c
+  Byte offset: 1531904
+SimHash: ef5c9191453d16c
+  Byte offset: 2187264
+SimHash: af5c90fa551d90c
+  Byte offset: 2158592
+SimHash: ef5c9193577f0ec
+  Byte offset: 180224
+SimHash: 8f5c1193557f1ac
+  Byte offset: 995328
+SimHash: ff751191476e0ac
+  Byte offset: 421888
+SimHash: 2eb5d1193574f36c
+  Byte offset: 1622016
+SimHash: 8f5011da551d19c
+  Byte offset: 2236416
+SimHash: 2491931821551bca
+  Byte offset: 2150400
+SimHash: cf3d919354ff0ac
+  Byte offset: 536576
+SimHash: ef5d9191541d16c
+  Byte offset: 1212416
+SimHash: 4cf1d9091513f1ec
+  Byte offset: 1474560
+SimHash: 8f1591b3552d1ac
+  Byte offset: 495616
+SimHash: 9f719193550f1cc
+  Byte offset: 1093632
+SimHash: cf50919b552e1ec
+  Byte offset: 1863680
+SimHash: cf5c91d1541d10c
+  Byte offset: 2191360
+SimHash: cf0581d3540c18c
+  Byte offset: 2355200
+SimHash: 4cf5c9191575f1ec
+  Byte offset: 774144
+SimHash: 8b7510d3514f1c6
+  Byte offset: 1310720
+SimHash: 8f5c9193506f2ac
+  Byte offset: 1605632
+SimHash: ef7c1191540e36c
+  Byte offset: 1847296
+SimHash: ef559193573f14c
+  Byte offset: 2002944
+SimHash: ef199193547f2ac
+  Byte offset: 524288
+SimHash: ef5c9193552d18c
+  Byte offset: 643072
+SimHash: af369193560d1ac
+  Byte offset: 937984
+SimHash: ef559193551d56c
+  Byte offset: 970752
+SimHash: ef5d9193503f18c
+  Byte offset: 1355776
+SimHash: cf5491d3560c1ec
+  Byte offset: 1601536
+SimHash: 8b57b1fb55049e8
+  Byte offset: 1986560
+SimHash: ab83800deb51c93c
+  Byte offset: 2232320
+SimHash: 4cb599191575d3ac
+  Byte offset: 86016
+SimHash: cf5591b1540f1ac
+  Byte offset: 929792
+SimHash: 4cf5c9193579e16c
+  Byte offset: 1400832
+SimHash: ff7d919152ff38c
+  Byte offset: 1490944
+SimHash: ef541191544e1ec
+  Byte offset: 1859584
+SimHash: ef5d919b551f18c
+  Byte offset: 2056192
+SimHash: ef5c9193551d16c
+  Byte offset: 2084864
+SimHash: cf75919b55ef08c
+  Byte offset: 20480
+SimHash: 8b5f11d3550d1ac
+  Byte offset: 458752
+SimHash: 4cf7c9193557e0ec
+  Byte offset: 1884160
+SimHash: ef5d9191550f12c
+  Byte offset: 1523712
+SimHash: ef7e9193546e12c
+  Byte offset: 1101824
+SimHash: ef5411b9545f16c
+  Byte offset: 2052096
+SimHash: 8f55919b573f18c
+  Byte offset: 1114112
+SimHash: cf19109b552e02c
+  Byte offset: 704512
+SimHash: cf5410b3452e1b4
+  Byte offset: 1187840
+SimHash: ff7d919b554e1ec
+  Byte offset: 1708032
+SimHash: f5d9193442d1ac
+  Byte offset: 2031616
+SimHash: ef78919b516f18e
+  Byte offset: 1736704
+SimHash: 8f529193571d0ac
+  Byte offset: 77824
+SimHash: 8f5c01b3562d1ec
+  Byte offset: 589824
+SimHash: cf1d80f3540f08c
+  Byte offset: 491520
+SimHash: cf4c91db551f1cc
+  Byte offset: 2183168
+SimHash: cf5c901b551d17c
+  Byte offset: 2338816
+SimHash: cf699191551d1cc
+  Byte offset: 466944
+SimHash: ef1c9093572f1ac
+  Byte offset: 1241088
+SimHash: cf5c9193560d18e
+  Byte offset: 950272
+SimHash: ab3591d3516f084
+  Byte offset: 1945600
+SimHash: 46f5c9193441d10c
+  Byte offset: 1966080
+SimHash: 8f0d919a57ac08c
+  Byte offset: 2371584
+SimHash: cf4d9193527e16c
+  Byte offset: 28672
+SimHash: eb9b91d3552c2ec
+  Byte offset: 73728
+SimHash: cf5491db501f18c
+  Byte offset: 98304
+SimHash: ef7d9193542e3ac
+  Byte offset: 1589248
+SimHash: 2cf199199546e0cc
+  Byte offset: 1957888
+SimHash: af5c91b3477f10c
+  Byte offset: 1990656
+SimHash: 46f5d1190551f14c
+  Byte offset: 2101248
+SimHash: cf15b0db540d080
+  Byte offset: 475136
+SimHash: cf5c91d9551f18c
+  Byte offset: 790528
+SimHash: af149193542f1ac
+  Byte offset: 1294336
+SimHash: 8fc7e15b40fdea9
+  Byte offset: 1970176
+SimHash: 8f7d91b3572f18c
+  Byte offset: 872448
+SimHash: cb5c1193540f18c
+  Byte offset: 1933312
+SimHash: cf5c90b1541f50c
+  Byte offset: 2154496
+SimHash: 66f5d9191576f3ac
+  Byte offset: 1626112
+SimHash: ef5591d3542f18c
+  Byte offset: 462848
+SimHash: bf799193426e1ac
+  Byte offset: 827392
+SimHash: 2ef5d1191511f16c
+  Byte offset: 1011712
+SimHash: e7599191543f38c
+  Byte offset: 1085440
+SimHash: af5d1193552d1c4
+  Byte offset: 1306624
+SimHash: cf5591d3548d08c
+  Byte offset: 2367488
+SimHash: db3890b
