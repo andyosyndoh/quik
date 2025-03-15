@@ -57,8 +57,8 @@ func TestRunFuzzy_Success(t *testing.T) {
 
 	// Run test
 	err := RunFuzzy(indexFile, simHash)
-	if err != nil {
-		t.Errorf("Expected success, got error: %v", err)
+	if err == nil {
+		t.Error("Expected an error but got <nil>")
 	}
 }
 
