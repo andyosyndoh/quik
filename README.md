@@ -145,7 +145,7 @@ Before building and running **TextIndexer**, ensure your system meets the follow
 ```bash
  go build -o textindex main.go 
  ```
-This creates an executable binary named textindex in the current directory.
+This creates an executable binary named `textindex` in the current directory.
 
  ### indexing-a-text-file
  To index a  your text file, use the following command strictly:
@@ -179,7 +179,7 @@ To look up content using a SimHash value, use the lookup command strictly:
 ```
 -c lookup: Specifies the lookup command.
 
--i index.idx: Path to the index file(the binary file from indexing).
+-i index.idx: Path to the index file(a binary file from indexing).
 
 -h <simhash_value>: SimHash value to look up (in hexadecimal format) which you can retrieve from the file simhash.txt after the indexing.
 ```
