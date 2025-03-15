@@ -20,13 +20,10 @@
 6. [Advanced Features](#advanced-features)
    - [Parallel Processing](#parallel-processing)
    - [Fuzzy Search](#fuzzy-search)
-7. [Performance Insights](#performance-insights)
-    - [Memory Efficiency](#memory-efficiency)
-    - [Scalability](#scalability)
-8. [Testing](#testing)
+7. [Testing](#testing)
     - [How to Run Unit Tests](#unit-tests)
-9. [Contributors](#contributors)
-10. [License](#license)
+8. [Contributors](#contributors)
+9. [License](#license)
 
 
 ## Introduction
@@ -146,6 +143,15 @@ for example...
 
    
 ### Step 2: Build the Executable Binary
+```bash
+ go build -o textindexer main.go 
+ ```
+ ### Indexing
+ Strictly use the command below to start indexing your input file which **MUST** be a **.txt** file
+
+ ```bash
+ ./textindex -c index -i large_text.txt -s 4096 -o index.idx
+ ```
 
 
 
