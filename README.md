@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-1. [Introduction](#overview)
+1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Algorithms and Techniques](#algorithms-and-techniques)
    - [SimHash](#simhash)
@@ -24,12 +24,12 @@
    - [Index Serialization](#index-serialization)
 8. [Advanced Features](#advanced-features)
    - [Parallel Processing](#parallel-processing)
-   -  [Fuzzy Search](#fuzzy-search)
+   - [Fuzzy Search](#fuzzy-search)
 9. [Performance Insights](#performance-insights)
-   - [Memory Efficiency](#memory-efficiency)
-   - [Scalability](#scalability)
+    - [Memory Efficiency](#memory-efficiency)
+    - [Scalability](#scalability)
 10. [Testing](#testing)
-    - [ How to run Unit Tests](#unit-tests)
+    - [How to Run Unit Tests](#unit-tests)
 11. [Contributors](#contributors)
 12. [License](#license)
 
@@ -41,6 +41,8 @@ By leveraging **SimHash**, a technique for generating similarity-preserving fing
 This tool is particularly useful for applications like:
 - **Document similarity detection**: Identifying near-duplicate content in large text corpora.
 - **Content retrieval**: Quickly locating specific phrases or chunks within large files.
-- **Text analysis**: Enabling efficient processing of large datasets for NLP(Natural Language Processing) tasks.
+- **Text analysis**: Enabling efficient processing of large datasets for NLP (Natural Language Processing) tasks.
 
 This document provides a detailed explanation of the tool, including the algorithms used, the approach taken, performance insights, unique techniques, and clear instructions on how to run the program and its test cases.
+
+
