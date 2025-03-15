@@ -16,16 +16,17 @@ type resultData struct {
 	offset  int64
 }
 
-
 // BuildIndex reads the specified file, processes it in chunks, and builds an index based on SimHash values.
 // It uses multiple worker goroutines to compute SimHash values in parallel and a collector goroutine to
 // aggregate the results into the index.
 //
 // Parameters:
-//   filename: The path to the file to be indexed.
+//
+//	filename: The path to the file to be indexed.
 //
 // Returns:
-//   error: An error if any occurs during file reading or processing.
+//
+//	error: An error if any occurs during file reading or processing.
 //
 // The function performs the following steps:
 // 1. Opens the specified file.

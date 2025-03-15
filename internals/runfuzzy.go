@@ -19,12 +19,12 @@ import (
 //   - error: An error if any occurs during the execution, otherwise nil.
 //
 // The function performs the following steps:
-//   1. Opens the index file and decodes its contents.
-//   2. Checks if the original file specified in the index exists.
-//   3. Parses the provided SimHash string into a uint64 value.
-//   4. Opens the original file and reads chunks at the offsets where nearly similar hashes are found.
-//   5. For each matching chunk, extracts and displays a phrase from the chunk along with the SimHash, byte offset, and original file name.
-//   6. If no nearly similar hashes are found, it prints a message indicating so.
+//  1. Opens the index file and decodes its contents.
+//  2. Checks if the original file specified in the index exists.
+//  3. Parses the provided SimHash string into a uint64 value.
+//  4. Opens the original file and reads chunks at the offsets where nearly similar hashes are found.
+//  5. For each matching chunk, extracts and displays a phrase from the chunk along with the SimHash, byte offset, and original file name.
+//  6. If no nearly similar hashes are found, it prints a message indicating so.
 func RunFuzzy(indexFile, simHashStr string) error {
 	dataFile, err := os.Open(indexFile)
 	if err != nil {
@@ -97,7 +97,7 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	if count == 0 {
 		fmt.Println("No Nearly Similar Hashes found")
 	}
-	
+
 	return nil
 }
 
@@ -105,6 +105,7 @@ func RunFuzzy(indexFile, simHashStr string) error {
 // Parameters:
 //   - a: the first 64-bit unsigned integer
 //   - b: the second 64-bit unsigned integer
+//
 // Returns:
 //   - int: the Hamming distance between the two integers
 func hammingdistance(a, b uint64) int {

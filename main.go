@@ -13,21 +13,22 @@ import (
 // Usage: textindex [options]
 //
 // Commands:
-//   -c index  : Indexes the input file and generates an output index file.
-//     Options:
-//       -i string : Input file path (required)
-//       -s int    : Chunk size in bytes (default: 4096)
-//       -o string : Output index file path (required)
 //
-//   -c lookup : Looks up a SimHash value in the specified index file.
-//     Options:
-//       -i string : Index file path (required)
-//       -h string : SimHash value to lookup (required)
+//	-c index  : Indexes the input file and generates an output index file.
+//	  Options:
+//	    -i string : Input file path (required)
+//	    -s int    : Chunk size in bytes (default: 4096)
+//	    -o string : Output index file path (required)
 //
-//   -c fuzzy  : Performs a fuzzy search for a SimHash value in the specified index file.
-//     Options:
-//       -i string : Index file path (required)
-//       -h string : SimHash value for fuzzy search (required)
+//	-c lookup : Looks up a SimHash value in the specified index file.
+//	  Options:
+//	    -i string : Index file path (required)
+//	    -h string : SimHash value to lookup (required)
+//
+//	-c fuzzy  : Performs a fuzzy search for a SimHash value in the specified index file.
+//	  Options:
+//	    -i string : Index file path (required)
+//	    -h string : SimHash value for fuzzy search (required)
 //
 // If an unknown command or invalid options are provided, the program will print an error message and exit.
 func main() {
@@ -83,7 +84,7 @@ func main() {
 			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
 		}
-	
+
 	case "fuzzy":
 		// New fuzzy command logic
 		fuzzyFlags := flag.NewFlagSet("fuzzy", flag.ExitOnError)
