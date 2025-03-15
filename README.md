@@ -163,5 +163,24 @@ Chunk size: 4096 bytes
 SimHash values and byte offsets written to simhash.txt
 ```
 
+### Lookup Output
 
+When you perform a lookup, TextIndexer retrieves the following information:
+
+- Original File: The name of the input file.
+- Byte Offset: The position of the chunk in the file.
+- Phrase: A snippet of text from the retrieved chunk.
+
+**Example Command**:
+```bash
+go run . -c lookup -i index.idx -h 6f39d09b418d006
+```
+
+**Example Output**:
+```bash
+Original file: gb.txt
+Byte offset: 16384
+Phrase: This command finds the position of the chunk with the given SimHash
+----------
+```
 

@@ -1,0 +1,2290 @@
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+
+
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
+Jam: Fast & Scalable Text
+Indexer
+Problem Statement
+Efficiently searching and retrieving data from large text files is a common challenge in computing.
+Your task is to implement a fast and scalable file indexing system in Go that can:
+1. Parse a text file, split it into fixed-size chunks (e.g., 1KB, 4KB, etc.).
+2. Generate a SimHash fingerprintfor each chunk to group similar chunks together.
+3. Build an in-memory index that maps SimHash values to byte offsets for fast retrieval.
+4. Allow quick lookups based on chunk hashes.
+Your implementation should prioritize speed, efficient memory use, and clean code structure.
+Bonus points for multi-threaded processing!🚀
+TextIndex CLI Documentation
+The go build command should produce a compiled executable called textindex, that follows the
+following documentation.
+Overview
+The textindex command-line tool processes a text file by splitting it into chunks, computing
+SimHash values, and creating an index for fast lookup. It provides two primary commands:
+1. Index – Parses a file, generates hashes, and builds an index.
+2. Lookup – Finds a chunk based on its hash and retrieves its position in the file.
+Usage
+1. Indexing a Text File
+The index command processes a text file and creates an in-memory index of SimHash values.
+Syntax
+Unset
+Unset
+textindex -c index -i <input_file.txt> -s <chunk_size> -o
+<index_file.idx>
+Arguments
+Argument Description
+-c index Specifies that the command is for indexing the file.
+-i <input_data_file.txt> Path to the input text file.
+-s <chunk_size> Size of each chunk in bytes (default: 4096 bytes).
+-o <index_file.idx> Path to save the generated index file.
+Example Usage
+textindex -c index -i large_text.txt -s 4096 -o index.idx
+This command splits large_text.txt into 4KB chunks, generates SimHash fingerprints, and saves the
+index in index.idx.
+2. Looking Up a Chunk by SimHash
+Unset
+Unset
+The lookup command retrieves the position of a chunk in a file based on its SimHash fingerprint,
+and outputs the following:
+● Original source file
+● Position in the source file
+● Word or phrase associated
+Syntax
+textindex -c lookup -i <index_file.idx> -h <simhash_value>
+Arguments
+Argument Description
+-c lookup Specifies that the command is for looking up a chunk.
+-i <index_file.idx> Path to the previously generated index file.
+-h <simhash_value> The SimHash value of the chunk to search for.
+Example Usage
+textindex -c lookup -i index.idx -h 3e4f1b2c98a6...
+This command finds the position of the chunk with the given SimHash and returns its byte offset
+in the original file.
+Additional Notes
+● The default chunk size is 4096 bytes (4KB) if not specified.
+● The SimHash algorithm is used to generate fingerprints for chunk similarity.
+● The index should be efficiently stored (e.g., in-memory map, file-based key-value store).
+● Similar text chunks will have similar SimHash values, allowing approximate searches.
+Error Handling
+Error Possible Cause Suggested Fix
+Error: File not found The input file does not exist. Check the file path and try again.
+Error: Invalid chunk
+size
+The chunk size is missing or
+non-numeric.
+Provide a valid chunk size (e.g.,
+1024).
+Error: SimHash not
+found
+The given SimHash is not in the
+index.
+Ensure the file was indexed before
+looking up.
+Deliverables
+Participants should submit:
+1. Go Implementation – A complete, well-structured and documented implementation of
+source code.
+2. Test Cases – A set of unit tests or regression tests along with a sample dataset to test and
+validate accuracy of the implementation.
+3. Readme - Documentation layout out the steps to build, test and run your solution.
+4. Video Presentation & Explanation - A short (~ 3 min) video presentation that discusses
+their approach, implementation.
+Assessment Criteria
+Participants will be judged based on the following key criteria:
+1. Correctness (30%)
+● Proper file parsing, SimHash generation, and indexing.
+● How: Automated testing across multiple benchmark data files to index and query specific
+content.
+2. Performance (25%)
+● Fast indexing and lookup times
+● How: Automated measurements across benchmark data files to produce combined
+execution time.
+3. Code Quality & Maintainability (20%)
+● Readability, modularity, and maintainability
+● How: Judges review the code and design.
+4. Presentation & Explanation (25%)
+● Clear documentation explaining the approach, trade-offs, and performance insights.
+● Well-organized test cases and examples for evaluation.
+● How: Judges review the video presentation, documentation and test cases, documentation
+and video presentation
+Bonus Features (Optional but rewarded)
