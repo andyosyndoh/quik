@@ -8,17 +8,24 @@ import (
 
 // TestRunLookup tests the RunLookup function.
 func TestRunLookup(t *testing.T) {
-	// Create a temporary index file for testing.
+	// Define test file names
 	indexFile := "test_index.gob"
 	originalFile := "test_original.txt"
-	chunkSize := 10
+	chunkSize := 16
+
+	// Create a mock original file
+	originalContent := "This is a test file containing sample text for lookup."
+	if err := os.WriteFile(originalFile, []byte(originalContent), 0644); err != nil {
+		t.Fatalf("Failed to create original file: %v", err)
+	}
+	defer os.Remove(originalFile) // Clean up
 
 	// Create a mock index data structure.
 	indexData := IndexData{
 		FileName:  originalFile,
 		ChunkSize: chunkSize,
 		Index: map[uint64][]int64{
-			0x1234567890ABCDEF: {0, 20}, // SimHash and byte offsets
+			0xabcdef1234567890: {0}, // SimHash and byte offset
 		},
 	}
 
@@ -27,30 +34,47 @@ func TestRunLookup(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to create index file: %v", err)
 	}
-	defer file.Close()
-
 	encoder := gob.NewEncoder(file)
 	if err := encoder.Encode(indexData); err != nil {
 		t.Fatalf("Failed to encode index data: %v", err)
 	}
+	file.Close()               // Close the file before testing
+	defer os.Remove(indexFile) // Clean up
 
-	// Create a mock original file with some content.
-	originalContent := "This is a test file for RunLookup function. It contains some text for testing."
-	err = os.WriteFile(originalFile, []byte(originalContent), 0644)
-	if err != nil {
-		t.Fatalf("Failed to create original file: %v", err)
+	// Define test cases
+	tests := []struct {
+		name      string
+		indexFile string
+		simHash   string
+		wantErr   bool
+	}{
+		{
+			name:      "Valid lookup",
+			indexFile: indexFile,
+			simHash:   "abcdef1234567890",
+			wantErr:   false,
+		},
+		{
+			name:      "Invalid SimHash",
+			indexFile: indexFile,
+			simHash:   "invalidhash",
+			wantErr:   true,
+		},
+		{
+			name:      "File not found",
+			indexFile: "non_existent.gob",
+			simHash:   "abcdef1234567890",
+			wantErr:   true,
+		},
 	}
-	defer os.Remove(originalFile)
 
-	// Define the SimHash to look up.
-	simHashStr := "1234567890ABCDEF"
-
-	// Call the RunLookup function.
-	err = RunLookup(indexFile, simHashStr)
-	if err != nil {
-		t.Errorf("RunLookup failed: %v", err)
+	// Run tests
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := RunLookup(tt.indexFile, tt.simHash)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("RunLookup() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
 	}
-
-	// Clean up the index file after the test.
-	defer os.Remove(indexFile)
 }
