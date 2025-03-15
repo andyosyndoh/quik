@@ -21,7 +21,6 @@
    - [Parallel Processing](#parallel-processing)
    - [Fuzzy Search](#fuzzy-search)
 7. [Testing](#testing)
-    - [How to Run Unit Tests](#unit-tests)
 8. [Contributors](#contributors)
 9. [License](#license)
 
@@ -314,16 +313,17 @@ Phrase: gerprints for chunk similarity. ● The index shou...
 
 ## Testing
 - To run the test and coverage for this project use the following command from the root directory.
+
 ```bash
 go test ./... -cover
 ```
 
-## contributors
+## Contributors
 - Anne Okingo - [GitHub Profile](https://github.com/Anne-Okingo)
 - Kennedy Ada - [GitHub Profile](https://github.com/adaken4)
 - Asman Malika - [GitHub Profile](https://github.com/Malika7188)
 - Hannah Apiko - [GitHub Profile](https://github.com/hanapiko)
 - Andrew Osindo -[GitHub Profile](https://github.com/andyosyndoh)
 
-## LICENSE
+## License
 - This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
