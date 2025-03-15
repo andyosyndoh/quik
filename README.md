@@ -312,3 +312,18 @@ Phrase: gerprints for chunk similarity. ● The index shou...
 
 - Scalability: Designed to handle large datasets efficiently.
 
+## Testing
+- To run the test and coverage for this project use the following command
+```bash
+go test ./... -cover
+```
+
+## Contributors
+- Anne Okingo - [GitHub Profile](https://github.com/Anne-Okingo)
+- Kennedy Ada - [GitHub Profile](https://github.com/adaken4)
+- Asman Malika - [GitHub Profile](https://github.com/Malika7188)
+- Hannah Apiko - [GitHub Profile](https://github.com/hanapiko)
+- Andrew Osindo -[GitHub Profile](https://github.com/andyosyndoh)
+
+## LICENSE
+- This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
