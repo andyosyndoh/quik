@@ -7,8 +7,22 @@ import (
 	"runtime"
 )
 
-// RunIndex builds an index for the input file, validates the input, and serializes it to the output file.
-// It also starts a goroutine to process the index data concurrently using IndexFileDecoder.
+// RunIndex processes an input file to build an index and serialize it to an output file.
+// It performs the following steps:
+// 1. Validates the chunk size to ensure it is greater than 0.
+// 2. Validates the input file using the ValidateInputFile function.
+// 3. Builds the index using the NewFileIndex and BuildIndex functions.
+// 4. Prepares the IndexData structure with the file name, chunk size, and index data.
+// 5. Starts a goroutine to process the index data concurrently using the IndexFileDecoder function.
+// 6. Serializes the index data to the specified output file using gob encoding.
+//
+// Parameters:
+// - inputFile: The path to the input file to be indexed.
+// - chunkSize: The size of each chunk for indexing.
+// - outputFile: The path to the output file where the serialized index data will be saved.
+//
+// Returns:
+// - error: An error if any step fails, otherwise nil.
 func RunIndex(inputFile string, chunkSize int, outputFile string) error {
 	// Ensures chunkSize is valid to prevent infinite loops or excessive resource usage.
 	if chunkSize <= 0 {

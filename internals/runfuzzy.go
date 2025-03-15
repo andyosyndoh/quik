@@ -9,7 +9,22 @@ import (
 	"strings"
 )
 
-// RunFuzzy performs a fuzzy search for SimHashes with a Hamming distance of 1 or 2.
+// RunFuzzy searches for nearly similar hashes in an index file and displays matching phrases from the original file.
+//
+// Parameters:
+//   - indexFile: The path to the index file containing the precomputed SimHashes and their offsets.
+//   - simHashStr: The SimHash value (in hexadecimal string format) to search for in the index.
+//
+// Returns:
+//   - error: An error if any occurs during the execution, otherwise nil.
+//
+// The function performs the following steps:
+//   1. Opens the index file and decodes its contents.
+//   2. Checks if the original file specified in the index exists.
+//   3. Parses the provided SimHash string into a uint64 value.
+//   4. Opens the original file and reads chunks at the offsets where nearly similar hashes are found.
+//   5. For each matching chunk, extracts and displays a phrase from the chunk along with the SimHash, byte offset, and original file name.
+//   6. If no nearly similar hashes are found, it prints a message indicating so.
 func RunFuzzy(indexFile, simHashStr string) error {
 	dataFile, err := os.Open(indexFile)
 	if err != nil {
@@ -33,6 +48,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	simHash, err := strconv.ParseUint(simHashStr, 16, 64)
 	if err != nil {
 		return fmt.Errorf("invalid SimHash value: %v", err)
+	}
+
+	//Lookup the SimHash in the index to retrieve the byte offsets
+	_, exists := indexData.Index[simHash]
+	if !exists {
+		return fmt.Errorf("SimHash not found in index: Ensure the file was indexed beforelooking up.")
 	}
 
 	// Open the original file
@@ -80,6 +101,12 @@ func RunFuzzy(indexFile, simHashStr string) error {
 	return nil
 }
 
+// The Hamming distance is the number of positions at which the corresponding bits are different.
+// Parameters:
+//   - a: the first 64-bit unsigned integer
+//   - b: the second 64-bit unsigned integer
+// Returns:
+//   - int: the Hamming distance between the two integers
 func hammingdistance(a, b uint64) int {
 	distance := 0
 	for i := 0; i < 64; i++ {
