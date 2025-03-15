@@ -18,7 +18,6 @@ func TestComputeSimHash(t *testing.T) {
 		{"Go is awesome", computeSimHash([]byte("Go is awesome"), h)},
 		{"", computeSimHash([]byte(""), h)}, // Edge case: empty string
 		{"repeat repeat repeat", computeSimHash([]byte("repeat repeat repeat"), h)},
-		
 	}
 
 	for _, test := range tests {

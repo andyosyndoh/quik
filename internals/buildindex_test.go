@@ -26,20 +26,20 @@ func TestBuildIndex(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T){
+		t.Run(tt.name, func(t *testing.T) {
 			// Initialize FileIndex with necessary parameters
 			fileIndex := &FileIndex{
 				numWorkers: 2,  // Use 2 worker goroutines for parallel processing
 				chunkSize:  16, // Read file in 16-byte chunks
 				index:      &Index{m: make(map[uint64][]int64)},
 			}
-		
+
 			// Run the BuildIndex function
 			err = fileIndex.BuildIndex(tt.filename)
 			if (err != nil) != tt.expectFail {
 				t.Fatalf("BuildIndex(%s) failed: expected failure = %v, got error = %v", tt.filename, tt.expectFail, err)
 			}
-		
+
 			// Verify the index is populated
 			if !tt.expectFail && len(fileIndex.index.m) == 0 {
 				t.Error("Index is empty, expected populated index data")
