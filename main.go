@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 	"textindexer/internals"
 )
 
@@ -59,6 +60,11 @@ func main() {
 			os.Exit(1)
 		}
 
+		if !strings.HasSuffix(*outputFile, ".idx") {
+			fmt.Println("Error: please provide an index file (with .idx extension)")
+			os.Exit(1)
+		}
+
 		if *chunkSize <= 0 {
 			fmt.Println("Error: invalid chunk size")
 			os.Exit(1)
@@ -80,6 +86,11 @@ func main() {
 			os.Exit(1)
 		}
 
+		if !strings.HasSuffix(*indexFile, ".idx") {
+			fmt.Println("Error: please input an index file")
+			os.Exit(1)
+		}
+
 		if err := internals.RunLookup(*indexFile, *simHashStr); err != nil {
 			fmt.Printf("Error: %v\n", err)
 			os.Exit(1)
@@ -94,6 +105,11 @@ func main() {
 
 		if *indexFile == "" || *simHashStr == "" {
 			fmt.Println("Error: -i and -h are required for fuzzy command")
+			os.Exit(1)
+		}
+
+		if !strings.HasSuffix(*indexFile, ".idx") {
+			fmt.Println("Error: please input an index file")
 			os.Exit(1)
 		}
 
