@@ -144,16 +144,39 @@ Before building and running **TextIndexer**, ensure your system meets the follow
    
 ### Step 2: Build the Executable Binary
 ```bash
- go build -o textindexer main.go 
+ go build -o textindex main.go 
  ```
 This creates an executable binary named textindexer in the current directory.
 
- ### Indexing
+ ### Indexing a text
  To index a  your text file, use the following command strictly:
 
  ```bash
  ./textindex -c index -i <input_file.txt> -s <chunk_size> -o <index_file.idx>
  ```
+ where
+```
+ -c index: Specifies the indexing command.
+
+ -i <input_file.txt>: Path to the input text file (must be a .txt file).
+
+ -s <chunk_size>: Size of each chunk in bytes (default: 4096).
+
+ -o <index_file.idx>: Path to save the generated index file(which is a binary file).
+```
+
+**Example Command**:
+```bash
+./textindex -c index -i sample.txt -s 4096 -o index.idx
+```
+
+ ### looking-up-content-by-simhash
+To look up content using a SimHash value, use the lookup command strictly:
+
+ ```bash
+./textindexer -c lookup -i index.idx -h <simhash_value>
+ ```
+ where
 ```
  -c index: Specifies the indexing command.
 
