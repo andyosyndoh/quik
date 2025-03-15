@@ -46,8 +46,8 @@ This tool is particularly useful for applications like:
 This document provides a detailed explanation of the tool, including the algorithms used, the approach taken, performance insights, unique techniques, and clear instructions on how to run the program and its test cases.
 
 ## Testing
-- To run the test for this project use the following command
+- To run the test and coverage for this project use the following command
 ```bash
-go test ./...
+go test ./... -cover
 ```
 
